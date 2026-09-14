@@ -18,7 +18,9 @@
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       color: var(--ink);
@@ -38,13 +40,20 @@
       pointer-events: none;
     }
 
-    button, a { -webkit-tap-highlight-color: transparent; }
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
     button { font: inherit; }
+
     button, .button { touch-action: manipulation; }
+
     :focus-visible {
       outline: 3px solid #ffe18a;
       outline-offset: 5px;
     }
+
+    [hidden] { display: none !important; }
 
     .site-header {
       max-width: 1200px;
@@ -126,6 +135,11 @@
       font-size: .93rem;
     }
 
+    .glasses-note .fullscreen-tip {
+      margin-top: 14px;
+      color: var(--cyan);
+    }
+
     .actions {
       display: flex;
       flex-wrap: wrap;
@@ -171,6 +185,9 @@
     }
 
     .reader {
+      --image-limit: max(180px, calc(100vh - 220px));
+      --image-limit: max(180px, calc(100dvh - 220px));
+
       max-width: 1600px;
       margin: 0 auto;
       padding: 14px;
@@ -199,18 +216,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
     }
 
-    .slide { margin: 0; text-align: center; }
-    [hidden] { display: none !important; }
+    .slide {
+      margin: 0;
+      width: 100%;
+      min-width: 0;
+      text-align: center;
+    }
 
-    .slide img {
+    .page-image {
       display: block;
       width: auto;
       height: auto;
       max-width: 100%;
-      max-height: calc(100vh - 220px);
-      max-height: max(180px, calc(100dvh - 220px));
+      max-height: var(--image-limit);
       object-fit: contain;
       margin: auto;
       border-radius: 5px;
@@ -222,6 +243,50 @@
       margin: 10px auto 0;
       max-width: 760px;
       font-size: .9rem;
+    }
+
+    /*
+      Page 2: square book page plus a separate start button.
+      The button is 18% of the displayed book-page width.
+      Both grow together when entering fullscreen.
+    */
+    .intro-page-layout {
+      width: min(100%, calc(var(--image-limit) * 1.2));
+      margin: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 100fr) minmax(0, 18fr);
+      column-gap: 1.6667%;
+      align-items: center;
+    }
+
+    .intro-page-layout .page-image {
+      width: 100%;
+      height: auto;
+      max-height: var(--image-limit);
+    }
+
+    .image-next-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      cursor: pointer;
+      line-height: 0;
+    }
+
+    .image-next-button img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .image-next-button:hover {
+      outline: 2px solid var(--cyan);
+      outline-offset: 5px;
     }
 
     .navigation {
@@ -248,6 +313,9 @@
 
     .reader:fullscreen,
     .reader.expanded {
+      --image-limit: max(100px, calc(100vh - 155px));
+      --image-limit: max(100px, calc(100dvh - 155px));
+
       width: 100%;
       max-width: none;
       height: 100%;
@@ -280,12 +348,6 @@
       min-height: 0;
     }
 
-    .reader:fullscreen .slide img,
-    .reader.expanded .slide img {
-      max-height: calc(100vh - 175px);
-      max-height: max(100px, calc(100dvh - 175px));
-    }
-
     .reader:fullscreen figcaption,
     .reader.expanded figcaption,
     .reader:fullscreen .keyboard-hint,
@@ -315,6 +377,7 @@
     }
 
     .book-section p { color: var(--muted); }
+
     .small { font-size: .85rem; }
 
     footer {
@@ -328,12 +391,22 @@
     .no-js .stage { display: block; }
     .no-js .js-only { display: none; }
 
+    .no-js .intro-page-layout {
+      display: block;
+      width: min(100%, var(--image-limit));
+    }
+
     @media (max-width: 520px) {
       .site-header { padding: 18px; }
       .brand { font-size: .98rem; }
       .intro { margin-top: 8px; }
       .reader { padding: 10px; }
-      .control { padding: 10px 13px; font-size: .88rem; }
+
+      .control {
+        padding: 10px 13px;
+        font-size: .88rem;
+      }
+
       .navigation { gap: 9px; }
       .toolbar .control { font-size: .8rem; }
       .book-section { padding: 25px 20px; }
@@ -369,6 +442,11 @@
           Use red/cyan anaglyph glasses—not regular cinema glasses.
           Enjoy the pages on your screen. No printing needed.
         </p>
+        <p class="fullscreen-tip">
+          <strong>Go fullscreen for a stronger 3D effect.</strong>
+          Select “View fullscreen” to see the pictures at a larger size
+          and make the most of your adventure.
+        </p>
       </div>
 
       <p class="lead">
@@ -401,62 +479,96 @@
       </div>
 
       <div class="stage">
+        <!-- PAGE 1: COVER -->
         <figure class="slide">
-          <img
+          <img class="page-image"
             src="images/dinosaur-anaglyph-3d-adventure-book-cover.jpg"
             alt="Dinosaur Anaglyph 3D Adventure book cover featuring a roaring Tyrannosaurus rex in a prehistoric forest, rendered in red-cyan 3D."
             fetchpriority="high" decoding="async">
-          <figcaption>Dinosaur Anaglyph 3D Adventure — the journey begins.</figcaption>
-        </figure>
-
-        <figure class="slide">
-          <img
-            src="images/anaglyph-3d-glasses-introduction-warpy.jpg"
-            alt="Warpi the robot introduces the red-cyan 3D glasses instructions beside a green start button in the time-travel capsule."
-            loading="lazy" decoding="async">
           <figcaption>
-            Put on your red/cyan glasses. When you are ready, choose Next page.
+            Dinosaur Anaglyph 3D Adventure — the journey begins.
           </figcaption>
         </figure>
 
+        <!-- PAGE 2: WARPI INTRO + CLICKABLE START IMAGE -->
         <figure class="slide">
-          <img
+          <div class="intro-page-layout">
+            <img class="page-image"
+              src="images/anaglyph-3d-glasses-introduction-warpy.jpg"
+              alt="Warpi the robot introduces the red-cyan 3D glasses instructions beside a green start button in the time-travel capsule."
+              loading="lazy" decoding="async">
+
+            <button class="image-next-button js-only"
+              id="image-start-button"
+              type="button"
+              aria-label="Start the time-machine adventure: go to page 3">
+              <img
+                src="images/button-start.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async">
+            </button>
+          </div>
+
+          <figcaption>
+            Put on your red/cyan glasses.
+            Select the start button or choose Next page to enter.
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 3: ENTRANCE -->
+        <figure class="slide">
+          <img class="page-image"
             src="images/time-machine-warning-signs-anaglyph-3d.jpg"
             alt="Anaglyph 3D time-machine entrance with yellow warning signs for safety goggles, high voltage and radiation."
             loading="lazy" decoding="async">
-          <figcaption>The entrance to the time machine. Ready to step inside?</figcaption>
+          <figcaption>
+            The entrance to the time machine. Ready to step inside?
+          </figcaption>
         </figure>
 
+        <!-- PAGE 4: TIME JUMP -->
         <figure class="slide">
-          <img
+          <img class="page-image"
             src="images/dinosaur-time-travel-cockpit-anaglyph-3d.jpg"
             alt="Warpi inside a time-machine cockpit with Earth ahead and the words We jump through time and space in red-cyan anaglyph 3D."
             loading="lazy" decoding="async">
-          <figcaption>Travel back through time with Warpi at the controls.</figcaption>
+          <figcaption>
+            Travel back through time with Warpi at the controls.
+          </figcaption>
         </figure>
 
+        <!-- PAGE 5: BRACHIOSAURUS COCKPIT -->
         <figure class="slide">
-          <img
+          <img class="page-image"
             src="images/brachiosaurus-time-machine-anaglyph-3d.jpg"
             alt="Warpi the robot pilots a time machine overlooking a group of Brachiosaurus dinosaurs, with flying reptiles overhead, in red-cyan anaglyph 3D."
             loading="lazy" decoding="async">
-          <figcaption>Our first encounter: Brachiosaurus beyond the cockpit windows.</figcaption>
+          <figcaption>
+            Our first encounter: Brachiosaurus beyond the cockpit windows.
+          </figcaption>
         </figure>
 
+        <!-- PAGE 6: BRACHIOSAURUS LAKE -->
         <figure class="slide">
-          <img
+          <img class="page-image"
             src="images/brachiosaurus-prehistoric-lake-anaglyph-3d.jpg"
             alt="Brachiosaurus standing in a prehistoric lake surrounded by forest and rocky cliffs, shown in red-cyan anaglyph 3D."
             loading="lazy" decoding="async">
-          <figcaption>A closer look at Brachiosaurus beside a prehistoric lake.</figcaption>
+          <figcaption>
+            A closer look at Brachiosaurus beside a prehistoric lake.
+          </figcaption>
         </figure>
 
+        <!-- PAGE 7: BRACHIOSAURUS RIVER -->
         <figure class="slide">
-          <img
+          <img class="page-image"
             src="images/brachiosaurus-tropical-river-anaglyph-3d.jpg"
             alt="Brachiosaurus wading through a tropical river with palm trees and distant mountains, shown in red-cyan anaglyph 3D."
             loading="lazy" decoding="async">
-          <figcaption>Explore another Brachiosaurus scene before continuing the journey.</figcaption>
+          <figcaption>
+            Explore another Brachiosaurus scene before continuing the journey.
+          </figcaption>
         </figure>
       </div>
 
@@ -464,8 +576,10 @@
         <button class="control" id="previous-button" type="button">
           ← Previous
         </button>
+
         <span id="page-count" role="status" aria-live="polite"
           aria-atomic="true"></span>
+
         <button class="control" id="next-button" type="button">
           Next page →
         </button>
@@ -485,10 +599,14 @@
         enjoy more anaglyph 3D scenes and discover the facts
         beneath each dinosaur picture.
       </p>
+
       <button class="button primary" type="button" disabled>
         Get the full ebook on Google Books
       </button>
-      <p class="small">Purchase link coming soon. 3D glasses are not included.</p>
+
+      <p class="small">
+        Purchase link coming soon. 3D glasses are not included.
+      </p>
     </section>
   </main>
 
@@ -504,27 +622,49 @@
       const next = document.getElementById("next-button");
       const counter = document.getElementById("page-count");
       const fullscreen = document.getElementById("fullscreen-button");
+      const imageStart = document.getElementById("image-start-button");
+
       let current = 0;
       let savedOverflow = "";
 
       document.body.classList.remove("no-js");
 
       function showPage(index) {
+        const focusWasOnStart = document.activeElement === imageStart;
+
         current = Math.max(0, Math.min(index, slides.length - 1));
+
         slides.forEach((slide, i) => {
           slide.hidden = i !== current;
         });
+
         previous.disabled = current === 0;
         next.disabled = current === slides.length - 1;
         counter.textContent = `Page ${current + 1} of ${slides.length}`;
 
-        // Load the next page before the reader reaches it.
-        const nextImage = slides[current + 1]?.querySelector("img");
-        if (nextImage) nextImage.loading = "eager";
+        slides[current].querySelectorAll("img").forEach(img => {
+          img.loading = "eager";
+        });
+
+        const upcoming = slides[current + 1];
+        if (upcoming) {
+          upcoming.querySelectorAll("img").forEach(img => {
+            img.loading = "eager";
+          });
+        }
+
+        // Keep keyboard focus on a visible control after the start button hides.
+        if (focusWasOnStart && current !== 1) {
+          next.focus({ preventScroll: true });
+        }
       }
 
       previous.addEventListener("click", () => showPage(current - 1));
       next.addEventListener("click", () => showPage(current + 1));
+
+      imageStart.addEventListener("click", () => {
+        showPage(2);
+      });
 
       function isExpanded() {
         return document.fullscreenElement === reader ||
@@ -533,9 +673,11 @@
 
       function syncFullscreenButton() {
         const active = isExpanded();
+
         fullscreen.textContent = active
           ? "✕ Exit fullscreen"
           : "⛶ View fullscreen";
+
         fullscreen.setAttribute("aria-pressed", String(active));
       }
 
@@ -543,12 +685,16 @@
         reader.classList.remove("expanded");
         document.body.style.overflow = savedOverflow;
         syncFullscreenButton();
-        fullscreen.focus();
+        fullscreen.focus({ preventScroll: true });
       }
 
       fullscreen.addEventListener("click", async () => {
         if (document.fullscreenElement === reader) {
-          await document.exitFullscreen();
+          try {
+            await document.exitFullscreen();
+          } catch (error) {
+            syncFullscreenButton();
+          }
           return;
         }
 
@@ -562,7 +708,7 @@
             await reader.requestFullscreen();
             return;
           } catch (error) {
-            // Use an expanded browser view when fullscreen is unavailable.
+            // Fall back to an expanded browser view.
           }
         }
 
@@ -582,12 +728,34 @@
         }
 
         if (event.altKey || event.ctrlKey || event.metaKey) return;
+
         if (event.target.matches("input, textarea, select") ||
             event.target.isContentEditable) return;
+
+        // Keep Tab navigation inside the expanded fallback viewer.
+        if (event.key === "Tab" &&
+            reader.classList.contains("expanded")) {
+          const focusable = Array.from(
+            reader.querySelectorAll("button:not(:disabled), a[href]")
+          ).filter(element => element.getClientRects().length > 0);
+
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+          return;
+        }
 
         const rect = reader.getBoundingClientRect();
         const inView = rect.top < window.innerHeight * .5 &&
           rect.bottom > window.innerHeight * .5;
+
         if (!inView && !isExpanded()) return;
 
         if (event.key === "ArrowRight") {
