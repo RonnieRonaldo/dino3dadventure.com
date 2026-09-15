@@ -52,7 +52,6 @@
     button, a { -webkit-tap-highlight-color: transparent; }
     button { font: inherit; }
     button, .button { touch-action: manipulation; }
-
     a { color: var(--cyan); }
 
     :focus-visible {
@@ -238,8 +237,8 @@
     .preview-note { margin: 18px 0 0; }
 
     .reader {
-      --image-limit: max(180px,calc(100vh - 220px));
-      --image-limit: max(180px,calc(100dvh - 220px));
+      --image-limit: max(180px,calc(100vh - 260px));
+      --image-limit: max(180px,calc(100dvh - 260px));
       max-width: 1600px;
       margin: 0 auto;
       padding: 14px;
@@ -294,11 +293,13 @@
     }
 
     figcaption {
-      max-width: 760px;
+      max-width: 800px;
       margin: 10px auto 0;
       color: var(--muted);
       font-size: .9rem;
     }
+
+    .scene-caption { margin: 0; }
 
     .intro-page-layout {
       width: min(100%,calc(var(--image-limit) * 1.2));
@@ -361,6 +362,46 @@
       font-size: .78rem;
     }
 
+    details {
+      margin-top: 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(10,30,49,.85);
+      overflow: hidden;
+      text-align: left;
+    }
+
+    summary {
+      padding: 15px 20px;
+      color: var(--ink);
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    summary::marker { color: var(--cyan); }
+
+    details[open] summary {
+      border-bottom: 1px solid var(--line);
+      color: var(--cyan);
+    }
+
+    .detail-content {
+      padding: 0 22px 20px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .detail-content p { color: var(--muted); }
+    .detail-content > h3:first-child { margin-top: 20px; }
+    .detail-content > p:last-child { margin-bottom: 0; }
+
+    .dino-details { margin-top: 12px; }
+
+    .dino-details summary {
+      font-size: .95rem;
+      color: var(--gold);
+    }
+
     .reader:fullscreen, .reader.expanded {
       --image-limit: max(100px,calc(100vh - 170px));
       --image-limit: max(100px,calc(100dvh - 170px));
@@ -394,6 +435,7 @@
       min-height: 0;
     }
 
+    /* Captions and their expandable text disappear in fullscreen. */
     .reader:fullscreen figcaption,
     .reader.expanded figcaption,
     .reader:fullscreen .keyboard-hint,
@@ -405,43 +447,7 @@
       flex-shrink: 0;
     }
 
-    .info-section > p, .book-section p {
-      color: var(--muted);
-    }
-
-    details {
-      margin-top: 15px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(10,30,49,.72);
-      overflow: hidden;
-    }
-
-    summary {
-      padding: 17px 20px;
-      color: var(--ink);
-      font-weight: 650;
-      cursor: pointer;
-    }
-
-    summary::marker { color: var(--cyan); }
-
-    details[open] summary {
-      border-bottom: 1px solid var(--line);
-      color: var(--cyan);
-    }
-
-    .detail-content { padding: 0 22px 20px; }
-    .detail-content p { color: var(--muted); }
-    .detail-content > h3:first-child { margin-top: 20px; }
-
-    .faq {
-      margin-top: 30px;
-      padding-top: 26px;
-      border-top: 1px solid var(--line);
-    }
-
-    .faq p { color: var(--muted); }
+    .info-section > p, .book-section p { color: var(--muted); }
 
     footer {
       padding: 18px 20px 35px;
@@ -472,6 +478,7 @@
       .navigation { gap: 8px; }
       #page-count { min-width: 80px; font-size: .8rem; }
       .detail-content { padding: 0 17px 17px; }
+      summary { padding: 14px 16px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -483,7 +490,6 @@
 <body class="no-js">
   <header class="site-header">
     <a class="brand" href="./" aria-label="Dino 3D Adventure home">
-      <!-- Decorative dinosaur skull: no separate image upload needed -->
       <svg class="brand-skull" viewBox="0 0 120 100"
            aria-hidden="true" focusable="false">
         <defs>
@@ -524,7 +530,6 @@
   <main>
     <section class="intro" aria-labelledby="intro-title">
       <p class="eyebrow">Put on your glasses. Step back in time.</p>
-
       <h1 id="intro-title">3D Anaglyph Images of Dinosaurs</h1>
 
       <p class="lead">
@@ -648,25 +653,86 @@
           </figcaption>
         </figure>
 
-        <!-- PAGE 6: BRACHIOSAURUS LAKE -->
+        <!-- PAGE 6: FIRST BRACHIOSAURUS PICTURE AND ITS TEXT -->
         <figure class="slide">
           <img class="page-image"
                src="images/brachiosaurus-prehistoric-lake-anaglyph-3d.jpg"
                alt="Brachiosaurus standing in a prehistoric lake surrounded by forest and rocky cliffs, in red-cyan anaglyph 3D."
                loading="lazy" decoding="async">
+
           <figcaption>
-            A closer look at Brachiosaurus in a prehistoric lake.
+            <p class="scene-caption">
+              A closer look at Brachiosaurus in a prehistoric lake.
+            </p>
+
+            <details class="dino-details">
+              <summary>
+                Read about Brachiosaurus — a giant plant-eater
+              </summary>
+
+              <div class="detail-content">
+                <h3>Brachiosaurus: A Long Neck and a Giant Appetite</h3>
+
+                <p>
+                  Brachiosaurus was an incredible dinosaur and it was
+                  truly enormous. In fact, it was one of the largest
+                  creatures ever to walk the Earth!
+                </p>
+
+                <p>
+                  One of the most remarkable things about Brachiosaurus
+                  was its long neck, which it used to reach high into
+                  the trees and munch on leaves. With those long necks,
+                  they could feast on vegetation that other dinosaurs
+                  couldn't reach, like a giant salad bar.
+                </p>
+
+                <p>
+                  Brachiosaurus had a relatively small head compared
+                  to its massive body and long neck. It was a gentle
+                  giant, preferring to graze on plants rather than
+                  hunt for meat.
+                </p>
+              </div>
+            </details>
           </figcaption>
         </figure>
 
-        <!-- PAGE 7: BRACHIOSAURUS RIVER -->
+        <!-- PAGE 7: SECOND BRACHIOSAURUS PICTURE AND ITS TEXT -->
         <figure class="slide">
           <img class="page-image"
                src="images/brachiosaurus-tropical-river-anaglyph-3d.jpg"
                alt="Brachiosaurus wading through a tropical river with palm trees and distant mountains, in anaglyph 3D."
                loading="lazy" decoding="async">
+
           <figcaption>
-            Explore another Brachiosaurus scene before continuing the journey.
+            <p class="scene-caption">
+              Explore another Brachiosaurus scene before continuing the journey.
+            </p>
+
+            <details class="dino-details">
+              <summary>
+                Read about Brachiosaurus — standing beside a giant
+              </summary>
+
+              <div class="detail-content">
+                <h3>Brachiosaurus: Standing Beside a Giant</h3>
+
+                <p>
+                  Imagine standing next to a Brachiosaurus—its head
+                  would be high up in the trees, and you'd need a
+                  telescope to see its eyes! These magnificent
+                  creatures would have towered above you.
+                </p>
+
+                <p>
+                  They also had long tails, but not for whacking
+                  things like some other dinosaurs. Their tails
+                  helped them balance their huge bodies and made
+                  them even more impressive.
+                </p>
+              </div>
+            </details>
           </figcaption>
         </figure>
       </div>
@@ -675,8 +741,10 @@
         <button class="control" id="previous-button" type="button">
           ← Previous
         </button>
+
         <span id="page-count" role="status" aria-live="polite"
               aria-atomic="true"></span>
+
         <button class="control" id="next-button" type="button">
           Next page →
         </button>
@@ -684,124 +752,95 @@
 
       <p class="keyboard-hint js-only">
         Use the ← and → arrow keys while browsing the preview.
+        Open “Read about Brachiosaurus” beneath a dinosaur picture
+        to read its accompanying text.
       </p>
     </section>
 
-    <section class="info-section" aria-labelledby="meet-title">
-      <p class="eyebrow">A closer look at the adventure</p>
-      <h2 id="meet-title">Meet the Dinosaurs with Warpi</h2>
+    <!-- GENERAL INFORMATION REMAINS OUTSIDE THE BOOK VIEWER -->
+    <section class="info-section" aria-labelledby="glasses-title">
+      <p class="eyebrow">Discover the depth behind the pictures</p>
+      <h2 id="glasses-title">How Do 3D Glasses Work?</h2>
+
       <p>
-        The time machine takes you to different moments in prehistory.
-        Warpi introduces each encounter from the cockpit, followed by
-        two illustrated dinosaur pages. Open the sections below to
-        read more about the preview.
+        These red cyan 3D images combine two slightly different views
+        using red and cyan colour channels. The coloured lenses
+        filter the image so that each eye receives a different view.
+        Your brain combines those views to create a sense of depth.
       </p>
 
-      <!-- This text is part of the HTML, even when collapsed. -->
       <details>
-        <summary>Brachiosaurus — explore the 3D pictures</summary>
+        <summary>Which glasses do I need for these dinosaur pictures?</summary>
         <div class="detail-content">
-          <h3>Brachiosaurus Through the Time-Machine Windows</h3>
           <p>
-            Look beyond Warpi and the cockpit controls to spot the
-            long-necked Brachiosaurus dinosaurs outside.
-            This scene introduces the dinosaur before the two closer views
-            that follow.
-          </p>
-
-          <h3>Brachiosaurus in a Prehistoric Landscape</h3>
-          <p>
-            The next two anaglyph images show Brachiosaurus among water,
-            trees and rocky scenery. With red/cyan glasses, compare
-            the foreground with the distant landscape and look for
-            the sense of depth.
-          </p>
-          <p>
-            Each dinosaur page also includes a short explanation beneath
-            the illustration. Use the fullscreen viewer for a larger
-            view of both the picture and its accompanying text.
+            Use red/cyan anaglyph glasses. These are often described
+            as red and blue 3D glasses. Follow the intended lens
+            orientation: red over the left eye and cyan over the right.
+            Polarized cinema glasses use a different system and
+            will not reveal the depth in these pictures.
           </p>
         </div>
       </details>
 
       <details>
-        <summary>A time-travel adventure with a robot pilot</summary>
+        <summary>Can I view the pictures without 3D glasses?</summary>
         <div class="detail-content">
-          <h3>Meet Warpi, Your Pilot</h3>
           <p>
-            Warpi guides you from the opening instructions into the
-            time-travel capsule. Once you are ready, use the green
-            start button on page 2 to continue your journey.
-          </p>
-
-          <h3>A Different Stop for Each Dinosaur</h3>
-          <p>
-            The story travels through time to meet dinosaurs in the
-            periods when they lived. Each new encounter starts aboard
-            the time machine, followed by two dinosaur illustrations
-            with information about the animal.
+            Yes, you can browse the preview, but you will see
+            overlapping red and cyan outlines. The glasses are
+            needed to experience the intended depth effect.
           </p>
         </div>
       </details>
 
-      <div class="faq">
-        <h2>How Do 3D Glasses Work?</h2>
-        <p>
-          These red cyan 3D images combine two slightly different views
-          using red and cyan colour channels. The coloured lenses
-          filter the image so that each eye receives a different view.
-          Your brain combines those views to create a sense of depth.
-        </p>
+      <details>
+        <summary>Why try the fullscreen view?</summary>
+        <div class="detail-content">
+          <p>
+            Fullscreen gives the square book pages more space
+            while keeping their proportions intact. The larger
+            view can make details, text and the depth effect easier
+            to appreciate. The result also depends on your screen,
+            glasses and viewing distance.
+          </p>
+          <p>
+            The expandable reading text is hidden in fullscreen
+            to leave more room for the illustration. Exit fullscreen
+            to open the text beneath the picture.
+          </p>
+        </div>
+      </details>
 
-        <details>
-          <summary>Which glasses do I need for these dinosaur pictures?</summary>
-          <div class="detail-content">
-            <p>
-              Use red/cyan anaglyph glasses. These are often described
-              as red and blue 3D glasses. Follow the intended lens
-              orientation: red over the left eye and cyan over the right.
-              Polarized cinema glasses use a different system and
-              will not reveal the depth in these pictures.
-            </p>
-          </div>
-        </details>
-
-        <details>
-          <summary>Can I view the pictures without 3D glasses?</summary>
-          <div class="detail-content">
-            <p>
-              Yes, you can browse the preview, but you will see
-              overlapping red and cyan outlines. The glasses are
-              needed to experience the intended depth effect.
-            </p>
-          </div>
-        </details>
-
-        <details>
-          <summary>Why try the fullscreen view?</summary>
-          <div class="detail-content">
-            <p>
-              Fullscreen gives the square book pages more space
-              while keeping their proportions intact. The larger
-              view can make details, text and the depth effect easier
-              to appreciate. The result also depends on your screen,
-              glasses and viewing distance.
-            </p>
-          </div>
-        </details>
-      </div>
+      <details>
+        <summary>Who is Warpi, and where does the time machine go?</summary>
+        <div class="detail-content">
+          <h3>Your Robot Pilot Through Prehistoric Time</h3>
+          <p>
+            Warpi guides you from the opening instructions into
+            the time-travel capsule. The story travels through
+            time to meet dinosaurs in the periods when they lived.
+          </p>
+          <p>
+            Each new encounter starts aboard the time machine,
+            followed by two dinosaur illustrations with information
+            about the animal.
+          </p>
+        </div>
+      </details>
     </section>
 
     <section class="book-section" id="full-book"
              aria-labelledby="book-title">
       <p class="eyebrow">Your journey has only just begun</p>
       <h2 id="book-title">A Dinosaur Book with 3D Glasses</h2>
+
       <p>
         Put on your own red/cyan glasses and continue the complete
         <em>Dinosaur Anaglyph 3D Adventure</em> with Warpi.
         Discover more dinosaurs, more illustrated encounters
         and more stops through prehistoric time.
       </p>
+
       <p>
         This website shares a free preview.
         To follow the rest of the story, you will need the full ebook.
@@ -838,8 +877,19 @@
       document.body.classList.remove("no-js");
 
       function showPage(index) {
-        const focusWasOnStart = document.activeElement === imageStart;
-        current = Math.max(0, Math.min(index, slides.length - 1));
+        const target = Math.max(0, Math.min(index, slides.length - 1));
+        const oldSlide = slides[current];
+        const focusWasInsideOldSlide =
+          oldSlide.contains(document.activeElement);
+        const changingPage = target !== current;
+
+        if (changingPage) {
+          oldSlide.querySelectorAll("details").forEach(details => {
+            details.open = false;
+          });
+        }
+
+        current = target;
 
         slides.forEach((slide, i) => {
           slide.hidden = i !== current;
@@ -860,8 +910,16 @@
           });
         }
 
-        if (focusWasOnStart && current !== 1) {
-          next.focus({ preventScroll: true });
+        if (
+          changingPage &&
+          (
+            focusWasInsideOldSlide ||
+            (document.activeElement === next && next.disabled) ||
+            (document.activeElement === previous && previous.disabled)
+          )
+        ) {
+          const focusTarget = next.disabled ? previous : next;
+          focusTarget.focus({ preventScroll: true });
         }
       }
 
@@ -876,9 +934,11 @@
 
       function syncFullscreenButton() {
         const active = isExpanded();
+
         fullscreen.textContent = active
           ? "✕ Exit fullscreen"
           : "⛶ View fullscreen";
+
         fullscreen.setAttribute("aria-pressed", String(active));
       }
 
@@ -917,7 +977,7 @@
             await reader.requestFullscreen();
             return;
           } catch (error) {
-            // Use an expanded browser view if native fullscreen is unavailable.
+            // Use an expanded browser view when native fullscreen is unavailable.
           }
         }
 
@@ -971,7 +1031,9 @@
           reader.classList.contains("expanded")
         ) {
           const focusable = Array.from(
-            reader.querySelectorAll("button:not(:disabled), a[href]")
+            reader.querySelectorAll(
+              "button:not(:disabled), a[href], summary"
+            )
           ).filter(element => element.getClientRects().length > 0);
 
           const first = focusable[0];
@@ -992,7 +1054,9 @@
           rect.top < window.innerHeight * .5 &&
           rect.bottom > window.innerHeight * .5;
 
-        if (!inView && !isExpanded()) return;
+        const focusInReader = reader.contains(document.activeElement);
+
+        if (!inView && !focusInReader && !isExpanded()) return;
 
         if (event.key === "ArrowRight") {
           event.preventDefault();
