@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>3D Anaglyph Images of Dinosaurs | Dino 3D Adventure</title>
-  <meta name="description" content="Explore dinosaur 3D pictures with red and blue glasses. Enjoy a free 16-page book preview with Warpi, dinosaurs and the flying reptile Pteranodon.">
+  <meta name="description" content="Explore dinosaur 3D pictures with red and blue glasses. Meet T. rex and other prehistoric animals in a free 17-page anaglyph book preview with Warpi.">
   <link rel="canonical" href="https://dino3dadventure.com/">
   <meta name="theme-color" content="#061426">
 
@@ -521,6 +521,87 @@
       width: min(100%,var(--image-limit));
     }
 
+    /* T. rex title and picture scale together without cropping. */
+    .trex-artwork {
+      width: min(100%,calc((var(--image-limit) - 12px) / 1.29));
+      margin: auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .trex-artwork img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      max-height: none;
+    }
+
+    .trex-title { border-radius: 5px; }
+    .finale-caption { max-width: 900px; }
+    .finale-caption > h2 { margin: 20px 0 12px; }
+
+    .finale-card {
+      margin-top: 24px;
+      padding: clamp(20px,4vw,32px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #061426;
+      text-align: center;
+    }
+
+    .warpi-message {
+      display: grid;
+      grid-template-columns: minmax(130px,210px) minmax(0,1fr);
+      align-items: center;
+      gap: 24px;
+      text-align: left;
+    }
+
+    .warpi-portrait {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .warpi-message p { margin: 0 0 12px; }
+
+    .encounter-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0;
+      margin: 20px 0 24px;
+      list-style: none;
+    }
+
+    .encounter-list li {
+      padding: 7px 13px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      color: var(--gold);
+      background: #102339;
+    }
+
+    .restart-link {
+      padding: 9px 14px;
+      margin-top: 16px;
+      border: 0;
+      border-radius: 8px;
+      color: var(--cyan);
+      background: transparent;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .farewell-eyes {
+      display: block;
+      width: min(100%,620px);
+      height: auto;
+      margin: 26px auto 0;
+    }
+
     @media (max-width: 700px) {
       .shorts-grid {
         grid-template-columns: 1fr;
@@ -552,6 +633,16 @@
       #page-count { min-width: 80px; font-size: .8rem; }
       .detail-content { padding: 0 17px 17px; }
       summary { padding: 14px 16px; }
+
+      .warpi-message {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .warpi-portrait {
+        max-width: 190px;
+        margin: auto;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -590,11 +681,13 @@
         <path d="M37 17 39 24M79 42 91 47M37 78 48 83"
               fill="none" stroke="#977443" stroke-width="2"/>
       </svg>
+
       <span class="brand-name">
         <span class="top">Dino 3D</span>
         <span class="bottom">Adventure</span>
       </span>
     </a>
+
     <a class="header-link" href="#glasses">About the glasses</a>
   </header>
 
@@ -626,7 +719,7 @@
           <strong>Try fullscreen for a more immersive view.</strong>
           For the best viewing experience, use a laptop or desktop and
           select “View fullscreen”. Each picture keeps its proportions
-          and the complete square stays visible. You can also explore
+          and the complete illustration stays visible. You can also explore
           the preview on a phone or tablet.
         </p>
       </div>
@@ -653,8 +746,8 @@
       </div>
 
       <p class="preview-note">
-        Explore the first <span id="preview-total">16</span> pages.
-        3D glasses are not included.
+        Explore <span id="preview-total">17</span> preview pages,
+        including a final T. rex teaser. 3D glasses are not included.
       </p>
     </section>
 
@@ -1080,6 +1173,159 @@
             </details>
           </figcaption>
         </figure>
+
+        <!-- PAGE 17: T. REX TEASER AND FAREWELL -->
+        <figure class="slide" id="trex-preview">
+          <div class="trex-artwork">
+            <img class="trex-title"
+                 src="images/tyrannosaurus-rex-3d-title.jpg"
+                 width="1310" height="254"
+                 alt="Tyrannosaurus Rex"
+                 loading="lazy" decoding="async">
+
+            <img class="page-image"
+                 src="images/t-rex-dinosaur-anaglyph-3d.jpg"
+                 width="1715" height="1879"
+                 alt="A roaring T. rex with open jaws and sharp teeth wading through a forest stream, shown as a red-cyan anaglyph 3D dinosaur picture."
+                 loading="lazy" decoding="async">
+          </div>
+
+          <figcaption class="finale-caption">
+            <h2>T. Rex 3D Picture — Meet Tyrannosaurus Rex</h2>
+            <p class="scene-caption">
+              One last roar before you go! Put on your red/cyan glasses
+              and try fullscreen to see this Tyrannosaurus rex picture
+              at its largest. This is a glimpse of the encounters still
+              waiting in the full book.
+            </p>
+
+            <details class="dino-details">
+              <summary>Read about T. rex — teeth, size and prehistoric life</summary>
+              <div class="detail-content">
+                <h3>A Giant Outside the Time-Machine Window</h3>
+                <p>
+                  Imagine Warpi bringing the time machine to a gentle stop.
+                  Beyond the window, a huge head appears between the trees.
+                  A mouth opens, revealing rows of teeth. Meet Tyrannosaurus
+                  rex, usually called T. rex — one of the most recognisable
+                  meat-eating dinosaurs. Our last 3D dinosaur picture gives
+                  you a glimpse of this remarkable animal before the free
+                  preview ends.
+                </p>
+
+                <h3>How Big Was Tyrannosaurus Rex?</h3>
+                <p>
+                  A large T. rex could reach around 12 metres (40 feet)
+                  in length. Imagine measuring that distance from its nose
+                  all the way to the end of its tail! It walked on two
+                  powerful back legs, while its arms looked surprisingly
+                  small beside its enormous body. From our imaginary
+                  cockpit, even one passing dinosaur would be quite a sight.
+                </p>
+
+                <h3>What Did T. Rex Eat?</h3>
+                <p>
+                  T. rex was a carnivore, which means it ate other animals.
+                  Its strong jaws and serrated teeth helped it tear through
+                  meat and crush bone. Those teeth were much more than a
+                  frightening smile: they were tools for feeding. Look
+                  closely at the open jaws in the illustration and imagine
+                  the scale of the real animal.
+                </p>
+
+                <h3>When and Where Did It Live?</h3>
+                <p>
+                  Tyrannosaurus rex lived around 68–66 million years ago,
+                  near the end of the Late Cretaceous period, in what is
+                  now western North America. Warpi needs the time machine
+                  to visit each animal in its own prehistoric world.
+                </p>
+
+                <h3>Explore This T. Rex Picture in 3D</h3>
+                <p>
+                  These overlapping red and cyan outlines are part of
+                  the anaglyph effect. With red and blue glasses of the
+                  correct red/cyan type, the two views create a sense of
+                  depth. Choose “View fullscreen”, keep the whole picture
+                  visible, and imagine looking through the window. Ready
+                  for more? Warpi has six further encounters waiting in
+                  the complete dinosaur ebook, including T. rex.
+                </p>
+              </div>
+            </details>
+
+            <div class="finale-card">
+              <div class="warpi-message">
+                <img class="warpi-portrait"
+                     src="images/warpi-robot-pilot-anaglyph-3d.png"
+                     width="1613" height="1090"
+                     alt="Warpi, the friendly robot pilot, saying farewell in red-cyan anaglyph 3D."
+                     loading="lazy" decoding="async">
+                <div>
+                  <p class="eyebrow">A message from your pilot</p>
+                  <h2>How Was Your Journey?</h2>
+                  <p>
+                    “What a journey! Which encounter was your favourite?
+                    The towering Brachiosaurus, the crested Dilophosaurus,
+                    the armored Euoplocephalus, or those enormous wings overhead?
+                  </p>
+                  <p>
+                    Don't leave your glasses behind just yet. There are
+                    more dinosaurs waiting beyond the windows of our time
+                    machine — and our adventure isn't over!”
+                  </p>
+                  <p>— Warpi, your robot pilot</p>
+                </div>
+              </div>
+
+              <h3>Six More Encounters in the Complete Book</h3>
+              <p>
+                This T. rex is just a teaser. Continue travelling with
+                Warpi to visit these six dinosaurs in their own prehistoric
+                worlds, with more 3D illustrations and stories about
+                when they lived and what they ate.
+              </p>
+
+              <ul class="encounter-list" aria-label="Further dinosaurs in the full ebook">
+                <li>Spinosaurus</li>
+                <li>Stegosaurus</li>
+                <li>Struthiomimus</li>
+                <li>Tyrannosaurus rex (T. rex)</li>
+                <li>Triceratops</li>
+                <li>Velociraptor</li>
+              </ul>
+
+              <p><strong>Your next stop is waiting. Shall we go?</strong></p>
+
+              <div class="actions">
+                <a class="button primary"
+                   href="https://play.google.com/store/books/details?id=9nrcEAAAQBAJ"
+                   target="_blank" rel="noopener noreferrer">
+                  Get the ebook on Google Play Books ↗
+                </a>
+                <a class="button"
+                   href="https://books.apple.com/us/book/dinosaur-3d-adventure-meet-the-top-10-mighty/id6469320374"
+                   target="_blank" rel="noopener noreferrer">
+                  Get the ebook on Apple Books ↗
+                </a>
+              </div>
+
+              <p class="small">
+                Digital ebook. Red/cyan 3D glasses are not included.
+              </p>
+
+              <button class="restart-link js-only" id="restart-adventure" type="button">
+                ⏮ Start the adventure again
+              </button>
+
+              <img class="farewell-eyes"
+                   src="images/dinosaur-eyes-anaglyph-3d-farewell.png"
+                   width="3256" height="1556"
+                   alt="When will we see you again? Two mysterious green reptile eyes stare out of the darkness in anaglyph 3D."
+                   loading="lazy" decoding="async">
+            </div>
+          </figcaption>
+        </figure>
       </div>
 
       <nav class="navigation js-only" aria-label="Preview page navigation">
@@ -1111,6 +1357,7 @@
     <section class="info-section" aria-labelledby="glasses-title">
       <p class="eyebrow">Discover the depth behind the pictures</p>
       <h2 id="glasses-title">How Do 3D Glasses Work?</h2>
+
       <p>
         These red cyan 3D images combine two slightly different views
         using red and cyan colour channels. The coloured lenses filter
@@ -1146,16 +1393,17 @@
         <summary>Why try the fullscreen view?</summary>
         <div class="detail-content">
           <p>
-            Fullscreen gives the square book pages more space while
+            Fullscreen gives the book pages more space while
             keeping their proportions intact. The larger view can
             make details, text and the depth effect easier to
             appreciate. The result also depends on your screen,
             glasses and viewing distance.
           </p>
           <p>
-            The expandable reading text is hidden in fullscreen to
-            leave more room for the illustration. Exit fullscreen
-            to open the text beneath the picture.
+            The expandable reading text and farewell message are hidden
+            in fullscreen to leave more room for the illustration.
+            Exit fullscreen to read the text beneath the picture
+            and find the links to the complete ebook.
           </p>
         </div>
       </details>
@@ -1174,7 +1422,7 @@
             followed by two illustrations with information
             about the animal. In this preview, you can meet
             Brachiosaurus, Dilophosaurus and Euoplocephalus,
-            plus the flying reptile Pteranodon.
+            plus the flying reptile Pteranodon and a final T. rex teaser.
           </p>
         </div>
       </details>
@@ -1184,6 +1432,7 @@
     <section class="shorts-section" id="videos" aria-labelledby="videos-title">
       <p class="eyebrow">Keep your glasses on</p>
       <h2 id="videos-title">Watch Anaglyph 3D Videos</h2>
+
       <p class="shorts-intro">
         Take a short detour into tunnels and space with three of my
         favourite anaglyph 3D Shorts. Watch them here or open them on
@@ -1254,10 +1503,11 @@
       </div>
     </section>
 
-    <!-- CLOSING STORY AND BOOK LINKS -->
+    <!-- CLOSING SUMMARY AND BOOK LINKS -->
     <section class="book-section" id="full-book" aria-labelledby="book-title">
       <p class="eyebrow">Your journey has only just begun</p>
       <h2 id="book-title">A Dinosaur Book with 3D Glasses</h2>
+
       <p>
         Your journey through prehistoric time doesn't have to end here.
         Explore dinosaur 3D pictures, watch anaglyph 3D videos and
@@ -1265,13 +1515,15 @@
         These images are designed for red/cyan glasses,
         often called red and blue 3D glasses.
       </p>
+
       <p>
         From the long neck of Brachiosaurus to the crests of
         Dilophosaurus, the armor of Euoplocephalus and the wings of
         Pteranodon, every stop reveals something different.
         Enjoyed the free preview? Continue the adventure in the full
         <em>Dinosaur Anaglyph 3D Adventure</em> ebook, with more
-        illustrated encounters and dinosaur facts to discover.
+        illustrated encounters with Spinosaurus, Stegosaurus,
+        Struthiomimus, Tyrannosaurus rex, Triceratops and Velociraptor.
       </p>
 
       <div class="actions">
@@ -1286,6 +1538,7 @@
           Get the ebook on Apple Books ↗
         </a>
       </div>
+
       <p class="small">
         This is a digital book. Red/cyan 3D glasses are not included.
         Book links open in a new tab.
@@ -1308,6 +1561,7 @@
       const fullscreen = document.getElementById("fullscreen-button");
       const imageStart = document.getElementById("image-start-button");
       const previewTotal = document.getElementById("preview-total");
+      const restart = document.getElementById("restart-adventure");
 
       let current = 0;
       let savedOverflow = "";
@@ -1369,6 +1623,11 @@
         showPage(0);
       });
 
+      restart.addEventListener("click", () => {
+        showPage(0);
+        reader.scrollIntoView({ block: "start" });
+      });
+
       previous.addEventListener("click", () => {
         showPage(current - 1);
       });
@@ -1388,9 +1647,11 @@
 
       function syncFullscreenButton() {
         const active = isExpanded();
+
         fullscreen.textContent = active
           ? "✕ Exit fullscreen"
           : "⛶ View fullscreen";
+
         fullscreen.setAttribute("aria-pressed", String(active));
       }
 
@@ -1429,7 +1690,7 @@
             await reader.requestFullscreen();
             return;
           } catch (error) {
-            // Use expanded browser view when native fullscreen is unavailable.
+            // Use expanded browser view if native fullscreen is unavailable.
           }
         }
 
