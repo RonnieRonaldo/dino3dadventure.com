@@ -484,6 +484,27 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
     }
+
+    .shorts-section {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: clamp(20px,4vw,36px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      text-align: center;
+    }
+    .shorts-intro { max-width: 720px; margin: 0 auto 24px; color: var(--muted); }
+    .shorts-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }
+    .short-card { min-width: 0; }
+    .short-card h3 { margin: 0 0 12px; font-size: 1rem; }
+    .short-player { width: 100%; aspect-ratio: 9 / 16; overflow: hidden; border-radius: 14px; background: #000; border: 1px solid var(--line); }
+    .short-player iframe { display: block; width: 100%; height: 100%; border: 0; }
+    .short-card .button { margin-top: 14px; font-size: .9rem; }
+    @media (max-width: 700px) {
+      .shorts-grid { grid-template-columns: 1fr; gap: 30px; }
+      .short-card { width: 100%; max-width: 360px; margin: auto; }
+    }
   </style>
 </head>
 
@@ -550,9 +571,10 @@
         </p>
         <p class="fullscreen-tip">
           <strong>Try fullscreen for a more immersive view.</strong>
-          Select “View fullscreen” to enlarge each picture while keeping
-          the complete square visible. You may find the depth effect
-          easier to appreciate at a larger size.
+          For the best viewing experience, use a laptop or desktop and
+          select “View fullscreen”. Each picture keeps its proportions
+          and the complete square stays visible. You can also explore
+          the preview on a phone or tablet.
         </p>
       </div>
 
@@ -829,21 +851,84 @@
       </details>
     </section>
 
+    <section class="shorts-section" id="videos" aria-labelledby="videos-title">
+      <p class="eyebrow">Keep your glasses on</p>
+      <h2 id="videos-title">Watch Anaglyph 3D Videos</h2>
+      <p class="shorts-intro">
+        Enjoy three of my favourite anaglyph 3D Shorts.
+        Watch them here or open them on YouTube. Use your red/cyan glasses
+        and try each video's fullscreen control for a larger view.
+      </p>
+      <div class="shorts-grid">
+        <article class="short-card" aria-labelledby="short-title-1">
+          <h3 id="short-title-1">Fall Into the Infinite Tunnel</h3>
+          <div class="short-player">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/wDywWy3-YxE?playsinline=1"
+              title="Fall Into the Infinite Tunnel — YouTube video player"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+              allowfullscreen></iframe>
+          </div>
+          <a class="button" href="https://www.youtube.com/shorts/wDywWy3-YxE"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Watch Fall Into the Infinite Tunnel on YouTube (opens in a new tab)">
+            Watch on YouTube ↗
+          </a>
+        </article>
+        <article class="short-card" aria-labelledby="short-title-2">
+          <h3 id="short-title-2">Galactic Descent</h3>
+          <div class="short-player">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/mPIT2V6bM2E?playsinline=1"
+              title="Galactic Descent — YouTube video player"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+              allowfullscreen></iframe>
+          </div>
+          <a class="button" href="https://www.youtube.com/shorts/mPIT2V6bM2E"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Watch Galactic Descent on YouTube (opens in a new tab)">
+            Watch on YouTube ↗
+          </a>
+        </article>
+        <article class="short-card" aria-labelledby="short-title-3">
+          <h3 id="short-title-3">Vintage Sun &amp; Spinning Moon</h3>
+          <div class="short-player">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/ZNtMy2amHv0?playsinline=1"
+              title="Vintage Sun &amp; Spinning Moon — YouTube video player"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+              allowfullscreen></iframe>
+          </div>
+          <a class="button" href="https://www.youtube.com/shorts/ZNtMy2amHv0"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Watch Vintage Sun &amp; Spinning Moon on YouTube (opens in a new tab)">
+            Watch on YouTube ↗
+          </a>
+        </article>
+      </div>
+    </section>
+
     <section class="book-section" id="full-book"
              aria-labelledby="book-title">
       <p class="eyebrow">Your journey has only just begun</p>
       <h2 id="book-title">A Dinosaur Book with 3D Glasses</h2>
 
       <p>
-        Put on your own red/cyan glasses and continue the complete
-        <em>Dinosaur Anaglyph 3D Adventure</em> with Warpi.
-        Discover more dinosaurs, more illustrated encounters
-        and more stops through prehistoric time.
+        Your journey through prehistoric time doesn't have to end here.
+        Explore dinosaur 3D pictures, watch anaglyph 3D videos and travel
+        with Warpi to meet more remarkable creatures. These images are
+        designed for red/cyan glasses, often called red and blue 3D glasses.
       </p>
-
       <p>
-        This website shares a free preview.
-        To follow the rest of the story, you will need the full ebook.
+        Enjoyed the free preview? Continue the adventure in the full
+        <em>Dinosaur Anaglyph 3D Adventure</em> ebook, with more illustrated
+        encounters and dinosaur facts to discover.
       </p>
 
       <button class="button primary" type="button" disabled>
