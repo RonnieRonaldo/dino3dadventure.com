@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RDWHWHSM6X"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RDWHWHSM6X');
-</script><meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dino 3D Adventure | Anaglyph Dinosaur Images & Book Preview</title>
-  <meta name="description" content="Travel through prehistoric time with Warpi. Explore dinosaur images in red-cyan anaglyph 3D and preview the Dino 3D Adventure ebook online.">
+
+  <title>3D Anaglyph Images of Dinosaurs | Dino 3D Adventure</title>
+  <meta name="description" content="Explore dinosaur 3D pictures with red and blue glasses. Join Warpi on a time-travel adventure and enjoy a free preview of our anaglyph dinosaur ebook.">
   <link rel="canonical" href="https://dino3dadventure.com/">
   <meta name="theme-color" content="#061426">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDWHWHSM6X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RDWHWHSM6X');
+  </script>
 
   <style>
     :root {
@@ -22,20 +24,20 @@
       --ink: #edf7ff;
       --muted: #becfe2;
       --cyan: #8cebea;
-      --line: rgba(167, 216, 245, .26);
+      --gold: #f3d898;
+      --line: rgba(167,216,245,.26);
+      --panel: rgba(4,17,35,.88);
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       color: var(--ink);
       background: #061426;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      line-height: 1.6;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height: 1.65;
     }
 
     body::before {
@@ -43,21 +45,18 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: url("images/space-background.jpg")
-        center center / cover no-repeat;
+      background: url("images/space-background.jpg") center / cover no-repeat;
       pointer-events: none;
     }
 
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
+    button, a { -webkit-tap-highlight-color: transparent; }
     button { font: inherit; }
-
     button, .button { touch-action: manipulation; }
 
+    a { color: var(--cyan); }
+
     :focus-visible {
-      outline: 3px solid #ffe18a;
+      outline: 3px solid var(--gold);
       outline-offset: 5px;
     }
 
@@ -66,81 +65,127 @@
     .site-header {
       max-width: 1200px;
       margin: auto;
-      padding: 24px;
+      padding: 25px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
     }
 
     .brand {
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--gold);
       text-decoration: none;
-      letter-spacing: .02em;
+    }
+
+    .brand-skull {
+      width: 74px;
+      height: 64px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 3px 9px rgba(0,0,0,.45));
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      font-family: Georgia,"Times New Roman",serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1;
+      text-shadow: 0 3px 8px rgba(0,0,0,.65);
+    }
+
+    .brand-name .top {
+      font-size: clamp(1.5rem,4vw,2.25rem);
+      letter-spacing: .055em;
+    }
+
+    .brand-name .bottom {
+      margin-top: 8px;
+      font-size: clamp(.72rem,2vw,1rem);
+      letter-spacing: .24em;
     }
 
     .header-link {
-      color: var(--cyan);
+      font-size: .88rem;
       text-decoration: none;
-      font-size: .9rem;
     }
 
     main { padding: 0 18px; }
 
-    .intro {
-      max-width: 850px;
-      margin: 20px auto 36px;
-      padding: clamp(24px, 5vw, 46px);
-      text-align: center;
+    .intro, .info-section, .book-section {
+      max-width: 900px;
+      margin: 20px auto 32px;
+      padding: clamp(24px,5vw,42px);
       border: 1px solid var(--line);
-      border-radius: 24px;
-      background: rgba(4, 17, 35, .83);
-      box-shadow: 0 18px 70px rgba(0, 0, 0, .25);
+      border-radius: 22px;
+      background: var(--panel);
+      box-shadow: 0 18px 65px rgba(0,0,0,.22);
     }
 
+    .intro, .book-section { text-align: center; }
+
     .eyebrow {
-      margin: 0 0 12px;
+      margin: 0 0 13px;
       color: var(--cyan);
-      font-size: .76rem;
+      font-size: .75rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: .16em;
+      letter-spacing: .14em;
     }
 
     h1 {
-      font-size: clamp(2.1rem, 6vw, 3.7rem);
-      line-height: 1.1;
       margin: 0 0 20px;
-      letter-spacing: -.04em;
+      font-family: Georgia,"Times New Roman",serif;
+      font-size: clamp(2rem,5.5vw,3.5rem);
+      line-height: 1.12;
+      color: var(--gold);
+      text-wrap: balance;
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      font-family: Georgia,"Times New Roman",serif;
+      font-size: clamp(1.4rem,3.4vw,1.9rem);
+      line-height: 1.25;
+      color: var(--gold);
+      text-wrap: balance;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      color: var(--gold);
+      font-size: 1.1rem;
+      line-height: 1.4;
     }
 
     .lead {
+      max-width: 710px;
+      margin: 0 auto 20px;
       color: var(--muted);
-      max-width: 660px;
-      margin: 0 auto 22px;
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
 
     .glasses-note {
-      padding: 18px;
+      padding: 20px;
       margin: 24px 0;
-      border-radius: 14px;
-      border: 1px solid rgba(140, 235, 234, .35);
-      background: rgba(61, 157, 186, .10);
+      border: 1px solid rgba(140,235,234,.35);
+      border-radius: 15px;
+      background: rgba(61,157,186,.1);
     }
 
-    .glasses-note strong {
-      display: block;
-      color: #fff;
-      margin-bottom: 5px;
+    .glasses-note h2 {
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 1.12rem;
     }
 
     .glasses-note p {
       margin: 0;
       color: var(--muted);
-      font-size: .93rem;
+      font-size: .94rem;
     }
 
     .glasses-note .fullscreen-tip {
@@ -161,12 +206,12 @@
       justify-content: center;
       min-height: 46px;
       padding: 11px 20px;
-      border-radius: 10px;
       border: 1px solid var(--line);
+      border-radius: 10px;
       background: #142a42;
-      color: #fff;
-      text-decoration: none;
+      color: white;
       font-weight: 650;
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -181,43 +226,45 @@
       cursor: not-allowed;
     }
 
-    .button:hover:not(:disabled),
-    .control:hover:not(:disabled) {
-      filter: brightness(1.14);
+    .button:hover:not(:disabled), .control:hover:not(:disabled) {
+      filter: brightness(1.12);
     }
 
-    .preview-note {
-      font-size: .85rem;
+    .preview-note, .small {
       color: var(--muted);
-      margin: 18px 0 0;
+      font-size: .85rem;
     }
+
+    .preview-note { margin: 18px 0 0; }
 
     .reader {
-      --image-limit: max(180px, calc(100vh - 220px));
-      --image-limit: max(180px, calc(100dvh - 220px));
-
+      --image-limit: max(180px,calc(100vh - 220px));
+      --image-limit: max(180px,calc(100dvh - 220px));
       max-width: 1600px;
       margin: 0 auto;
       padding: 14px;
       border: 1px solid var(--line);
       border-radius: 20px;
-      background: rgba(3, 12, 26, .70);
+      background: rgba(3,12,26,.76);
       scroll-margin-top: 12px;
     }
 
     .toolbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      max-width: 1000px;
-      margin: 0 auto 12px;
+      justify-content: space-between;
+      gap: 15px;
+      max-width: 1100px;
+      margin: 0 auto 14px;
     }
 
-    .reader-label {
-      color: var(--muted);
-      font-size: .85rem;
+    .reader-title {
       margin: 0;
+      font-family: inherit;
+      font-size: clamp(.95rem,2vw,1.2rem);
+      font-weight: 650;
+      color: var(--gold);
+      text-align: left;
     }
 
     .stage {
@@ -228,9 +275,9 @@
     }
 
     .slide {
-      margin: 0;
       width: 100%;
       min-width: 0;
+      margin: 0;
       text-align: center;
     }
 
@@ -243,26 +290,21 @@
       object-fit: contain;
       margin: auto;
       border-radius: 5px;
-      box-shadow: 0 12px 45px rgba(0, 0, 0, .35);
+      box-shadow: 0 12px 45px rgba(0,0,0,.35);
     }
 
-    .slide figcaption {
-      color: var(--muted);
-      margin: 10px auto 0;
+    figcaption {
       max-width: 760px;
+      margin: 10px auto 0;
+      color: var(--muted);
       font-size: .9rem;
     }
 
-    /*
-      Page 2: square book page plus a separate start button.
-      The button is 18% of the displayed book-page width.
-      Both grow together when entering fullscreen.
-    */
     .intro-page-layout {
-      width: min(100%, calc(var(--image-limit) * 1.2));
+      width: min(100%,calc(var(--image-limit) * 1.2));
       margin: auto;
       display: grid;
-      grid-template-columns: minmax(0, 100fr) minmax(0, 18fr);
+      grid-template-columns: minmax(0,100fr) minmax(0,18fr);
       column-gap: 1.6667%;
       align-items: center;
     }
@@ -302,28 +344,26 @@
       align-items: center;
       justify-content: center;
       gap: 16px;
-      margin: 14px 0 0;
+      margin-top: 14px;
     }
 
     #page-count {
       min-width: 95px;
+      color: var(--muted);
       text-align: center;
       font-size: .9rem;
-      color: var(--muted);
     }
 
     .keyboard-hint {
+      margin: 12px 0 0;
+      color: var(--muted);
       text-align: center;
       font-size: .78rem;
-      color: var(--muted);
-      margin: 12px 0 0;
     }
 
-    .reader:fullscreen,
-    .reader.expanded {
-      --image-limit: max(100px, calc(100vh - 155px));
-      --image-limit: max(100px, calc(100dvh - 155px));
-
+    .reader:fullscreen, .reader.expanded {
+      --image-limit: max(100px,calc(100vh - 170px));
+      --image-limit: max(100px,calc(100dvh - 170px));
       width: 100%;
       max-width: none;
       height: 100%;
@@ -344,14 +384,12 @@
       height: 100dvh;
     }
 
-    .reader:fullscreen .toolbar,
-    .reader.expanded .toolbar {
+    .reader:fullscreen .toolbar, .reader.expanded .toolbar {
       width: 100%;
       flex-shrink: 0;
     }
 
-    .reader:fullscreen .stage,
-    .reader.expanded .stage {
+    .reader:fullscreen .stage, .reader.expanded .stage {
       flex: 1;
       min-height: 0;
     }
@@ -363,35 +401,52 @@
       display: none;
     }
 
-    .reader:fullscreen .navigation,
-    .reader.expanded .navigation {
+    .reader:fullscreen .navigation, .reader.expanded .navigation {
       flex-shrink: 0;
     }
 
-    .book-section {
-      max-width: 850px;
-      margin: 36px auto;
-      padding: 30px;
-      text-align: center;
-      border-radius: 20px;
+    .info-section > p, .book-section p {
+      color: var(--muted);
+    }
+
+    details {
+      margin-top: 15px;
       border: 1px solid var(--line);
-      background: rgba(4, 17, 35, .86);
+      border-radius: 12px;
+      background: rgba(10,30,49,.72);
+      overflow: hidden;
     }
 
-    h2 {
-      line-height: 1.2;
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      margin: 0 0 15px;
+    summary {
+      padding: 17px 20px;
+      color: var(--ink);
+      font-weight: 650;
+      cursor: pointer;
     }
 
-    .book-section p { color: var(--muted); }
+    summary::marker { color: var(--cyan); }
 
-    .small { font-size: .85rem; }
+    details[open] summary {
+      border-bottom: 1px solid var(--line);
+      color: var(--cyan);
+    }
+
+    .detail-content { padding: 0 22px 20px; }
+    .detail-content p { color: var(--muted); }
+    .detail-content > h3:first-child { margin-top: 20px; }
+
+    .faq {
+      margin-top: 30px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+    }
+
+    .faq p { color: var(--muted); }
 
     footer {
-      text-align: center;
-      color: var(--muted);
       padding: 18px 20px 35px;
+      color: var(--muted);
+      text-align: center;
       font-size: .8rem;
     }
 
@@ -401,23 +456,22 @@
 
     .no-js .intro-page-layout {
       display: block;
-      width: min(100%, var(--image-limit));
+      width: min(100%,var(--image-limit));
     }
 
-    @media (max-width: 520px) {
-      .site-header { padding: 18px; }
-      .brand { font-size: .98rem; }
+    @media (max-width: 560px) {
+      .site-header { padding: 18px; gap: 12px; }
+      .brand { gap: 10px; }
+      .brand-skull { width: 52px; height: 48px; }
+      .header-link { max-width: 85px; font-size: .78rem; }
       .intro { margin-top: 8px; }
       .reader { padding: 10px; }
-
-      .control {
-        padding: 10px 13px;
-        font-size: .88rem;
-      }
-
-      .navigation { gap: 9px; }
-      .toolbar .control { font-size: .8rem; }
-      .book-section { padding: 25px 20px; }
+      .toolbar { gap: 10px; align-items: flex-start; }
+      .toolbar .control { font-size: .78rem; flex-shrink: 0; }
+      .control { padding: 10px 12px; font-size: .86rem; }
+      .navigation { gap: 8px; }
+      #page-count { min-width: 80px; font-size: .8rem; }
+      .detail-content { padding: 0 17px 17px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -428,38 +482,80 @@
 
 <body class="no-js">
   <header class="site-header">
-    <a class="brand" href="./">DINO 3D ADVENTURE</a>
+    <a class="brand" href="./" aria-label="Dino 3D Adventure home">
+      <!-- Decorative dinosaur skull: no separate image upload needed -->
+      <svg class="brand-skull" viewBox="0 0 120 100"
+           aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="bone" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff0c4"/>
+            <stop offset="1" stop-color="#c49c57"/>
+          </linearGradient>
+        </defs>
+        <g fill="url(#bone)" stroke="#977443" stroke-width="1.5"
+           stroke-linejoin="round">
+          <path d="M9 45 17 27 36 14 59 13 76 21 83 30
+                   107 35 115 44 111 56 88 61 65 61
+                   55 69 35 69 24 58 13 57Z"/>
+          <path d="M27 69 42 77 68 78 91 69 108 65
+                   101 76 77 87 47 89 30 82 19 69Z"/>
+          <path d="m58 61 5 13 5-13m7 0 5 12 5-13
+                   m6-1 5 11 5-13m-56 1 4 10 5-10"/>
+        </g>
+        <g fill="#071426">
+          <path d="M29 32Q41 20 54 28L59 42 47 53 31 48Z"/>
+          <path d="m65 32 10 7-5 13-9-3Z"/>
+          <path d="m98 40 10 3-3 6-9-1Z"/>
+          <path d="m19 48 8 5 5 9-9-4Z"/>
+        </g>
+        <path d="M37 17 39 24M79 42 91 47M37 78 48 83"
+              fill="none" stroke="#977443" stroke-width="2"/>
+      </svg>
+
+      <span class="brand-name">
+        <span class="top">Dino 3D</span>
+        <span class="bottom">Adventure</span>
+      </span>
+    </a>
+
     <a class="header-link" href="#glasses">About the glasses</a>
   </header>
 
   <main>
     <section class="intro" aria-labelledby="intro-title">
       <p class="eyebrow">Put on your glasses. Step back in time.</p>
-      <h1 id="intro-title">Your dinosaur adventure starts here.</h1>
+
+      <h1 id="intro-title">3D Anaglyph Images of Dinosaurs</h1>
 
       <p class="lead">
-        Join Warpi, your robot pilot, on a journey through prehistoric
-        time. Meet dinosaurs in red-cyan anaglyph 3D and discover
-        when they lived, what they ate and what made them remarkable.
+        Climb aboard the time machine with Warpi, your robot pilot.
+        Explore anaglyph images of dinosaurs as you travel through
+        prehistoric time. Each stop brings you face to face with another
+        dinosaur, with illustrated pages about its world and way of life.
       </p>
 
       <div class="glasses-note" id="glasses">
-        <strong>Red/cyan 3D glasses required for the depth effect</strong>
+        <h2>3D Pictures for Red and Blue Glasses</h2>
         <p>
-          Without the glasses, you will see overlapping colours.
-          Use red/cyan anaglyph glasses—not regular cinema glasses.
-          Enjoy the pages on your screen. No printing needed.
+          To see the depth effect, you need
+          <strong>red/cyan anaglyph 3D glasses</strong>, often called
+          red and blue glasses. Regular cinema glasses will not work
+          with these images. Without the correct glasses, the red and
+          cyan outlines will appear doubled.
         </p>
         <p class="fullscreen-tip">
-          <strong>Go fullscreen for a stronger 3D effect.</strong>
-          Select “View fullscreen” to see the pictures at a larger size
-          and make the most of your adventure.
+          <strong>Try fullscreen for a more immersive view.</strong>
+          Select “View fullscreen” to enlarge each picture while keeping
+          the complete square visible. You may find the depth effect
+          easier to appreciate at a larger size.
         </p>
       </div>
 
       <p class="lead">
-        This free preview shows the opening of the book.
-        The complete time-travel adventure is available in the full ebook.
+        Enjoy the opening of <em>Dinosaur Anaglyph 3D Adventure</em>
+        in this free online preview. This is a sample of the book;
+        the complete journey continues in the full ebook.
+        No printing needed.
       </p>
 
       <div class="actions">
@@ -470,18 +566,18 @@
       </div>
 
       <p class="preview-note">
-        The first 7 preview pages are available here.
+        Explore the first 7 pages.
         More pages will be added to complete the 15-page preview.
       </p>
     </section>
 
-    <section class="reader" id="reader"
-      aria-label="Dino 3D Adventure book preview">
-
+    <section class="reader" id="reader" aria-labelledby="reader-title">
       <div class="toolbar">
-        <p class="reader-label">FREE BOOK PREVIEW</p>
+        <h2 class="reader-title" id="reader-title">
+          Dinosaur 3D Pictures — Free Book Preview
+        </h2>
         <button class="control js-only" id="fullscreen-button"
-          type="button" aria-pressed="false">
+                type="button" aria-pressed="false">
           ⛶ View fullscreen
         </button>
       </div>
@@ -490,46 +586,41 @@
         <!-- PAGE 1: COVER -->
         <figure class="slide">
           <img class="page-image"
-            src="images/dinosaur-anaglyph-3d-adventure-book-cover.jpg"
-            alt="Dinosaur Anaglyph 3D Adventure book cover featuring a roaring Tyrannosaurus rex in a prehistoric forest, rendered in red-cyan 3D."
-            fetchpriority="high" decoding="async">
+               src="images/dinosaur-anaglyph-3d-adventure-book-cover.jpg"
+               alt="Dinosaur Anaglyph 3D Adventure book cover showing a roaring Tyrannosaurus rex in a prehistoric forest."
+               fetchpriority="high" decoding="async">
           <figcaption>
-            Dinosaur Anaglyph 3D Adventure — the journey begins.
+            Dinosaur Anaglyph 3D Adventure — your journey begins here.
           </figcaption>
         </figure>
 
-        <!-- PAGE 2: WARPI INTRO + CLICKABLE START IMAGE -->
+        <!-- PAGE 2: WARPI INTRO AND START BUTTON -->
         <figure class="slide">
           <div class="intro-page-layout">
             <img class="page-image"
-              src="images/anaglyph-3d-glasses-introduction-warpy.jpg"
-              alt="Warpi the robot introduces the red-cyan 3D glasses instructions beside a green start button in the time-travel capsule."
-              loading="lazy" decoding="async">
+                 src="images/anaglyph-3d-glasses-introduction-warpy.jpg"
+                 alt="Warpi the robot introduces the 3D glasses instructions inside the time-travel capsule."
+                 loading="lazy" decoding="async">
 
             <button class="image-next-button js-only"
-              id="image-start-button"
-              type="button"
-              aria-label="Start the time-machine adventure: go to page 3">
-              <img
-                src="images/button-start.jpg"
-                alt=""
-                loading="lazy"
-                decoding="async">
+                    id="image-start-button" type="button"
+                    aria-label="Start the time-machine adventure: go to page 3">
+              <img src="images/button-start.jpg" alt=""
+                   loading="lazy" decoding="async">
             </button>
           </div>
-
           <figcaption>
             Put on your red/cyan glasses.
-            Select the start button or choose Next page to enter.
+            Select the green start button or choose Next page to enter.
           </figcaption>
         </figure>
 
         <!-- PAGE 3: ENTRANCE -->
         <figure class="slide">
           <img class="page-image"
-            src="images/time-machine-warning-signs-anaglyph-3d.jpg"
-            alt="Anaglyph 3D time-machine entrance with yellow warning signs for safety goggles, high voltage and radiation."
-            loading="lazy" decoding="async">
+               src="images/time-machine-warning-signs-anaglyph-3d.jpg"
+               alt="Time-machine entrance in anaglyph 3D, covered with yellow warning signs and a safety goggles symbol."
+               loading="lazy" decoding="async">
           <figcaption>
             The entrance to the time machine. Ready to step inside?
           </figcaption>
@@ -538,20 +629,20 @@
         <!-- PAGE 4: TIME JUMP -->
         <figure class="slide">
           <img class="page-image"
-            src="images/dinosaur-time-travel-cockpit-anaglyph-3d.jpg"
-            alt="Warpi inside a time-machine cockpit with Earth ahead and the words We jump through time and space in red-cyan anaglyph 3D."
-            loading="lazy" decoding="async">
+               src="images/dinosaur-time-travel-cockpit-anaglyph-3d.jpg"
+               alt="Warpi in the time-machine cockpit with Earth ahead as the journey through time and space begins."
+               loading="lazy" decoding="async">
           <figcaption>
             Travel back through time with Warpi at the controls.
           </figcaption>
         </figure>
 
-        <!-- PAGE 5: BRACHIOSAURUS COCKPIT -->
+        <!-- PAGE 5: BRACHIOSAURUS TIME MACHINE -->
         <figure class="slide">
           <img class="page-image"
-            src="images/brachiosaurus-time-machine-anaglyph-3d.jpg"
-            alt="Warpi the robot pilots a time machine overlooking a group of Brachiosaurus dinosaurs, with flying reptiles overhead, in red-cyan anaglyph 3D."
-            loading="lazy" decoding="async">
+               src="images/brachiosaurus-time-machine-anaglyph-3d.jpg"
+               alt="Warpi at the controls of a time machine overlooking Brachiosaurus dinosaurs and flying reptiles in red-cyan 3D."
+               loading="lazy" decoding="async">
           <figcaption>
             Our first encounter: Brachiosaurus beyond the cockpit windows.
           </figcaption>
@@ -560,20 +651,20 @@
         <!-- PAGE 6: BRACHIOSAURUS LAKE -->
         <figure class="slide">
           <img class="page-image"
-            src="images/brachiosaurus-prehistoric-lake-anaglyph-3d.jpg"
-            alt="Brachiosaurus standing in a prehistoric lake surrounded by forest and rocky cliffs, shown in red-cyan anaglyph 3D."
-            loading="lazy" decoding="async">
+               src="images/brachiosaurus-prehistoric-lake-anaglyph-3d.jpg"
+               alt="Brachiosaurus standing in a prehistoric lake surrounded by forest and rocky cliffs, in red-cyan anaglyph 3D."
+               loading="lazy" decoding="async">
           <figcaption>
-            A closer look at Brachiosaurus beside a prehistoric lake.
+            A closer look at Brachiosaurus in a prehistoric lake.
           </figcaption>
         </figure>
 
         <!-- PAGE 7: BRACHIOSAURUS RIVER -->
         <figure class="slide">
           <img class="page-image"
-            src="images/brachiosaurus-tropical-river-anaglyph-3d.jpg"
-            alt="Brachiosaurus wading through a tropical river with palm trees and distant mountains, shown in red-cyan anaglyph 3D."
-            loading="lazy" decoding="async">
+               src="images/brachiosaurus-tropical-river-anaglyph-3d.jpg"
+               alt="Brachiosaurus wading through a tropical river with palm trees and distant mountains, in anaglyph 3D."
+               loading="lazy" decoding="async">
           <figcaption>
             Explore another Brachiosaurus scene before continuing the journey.
           </figcaption>
@@ -584,10 +675,8 @@
         <button class="control" id="previous-button" type="button">
           ← Previous
         </button>
-
         <span id="page-count" role="status" aria-live="polite"
-          aria-atomic="true"></span>
-
+              aria-atomic="true"></span>
         <button class="control" id="next-button" type="button">
           Next page →
         </button>
@@ -598,14 +687,124 @@
       </p>
     </section>
 
-    <section class="book-section" id="full-book">
-      <p class="eyebrow">There is more to discover</p>
-      <h2>Your journey has only just begun.</h2>
+    <section class="info-section" aria-labelledby="meet-title">
+      <p class="eyebrow">A closer look at the adventure</p>
+      <h2 id="meet-title">Meet the Dinosaurs with Warpi</h2>
       <p>
-        Climb back into the time machine and explore the complete
-        adventure with Warpi. Visit more prehistoric creatures,
-        enjoy more anaglyph 3D scenes and discover the facts
-        beneath each dinosaur picture.
+        The time machine takes you to different moments in prehistory.
+        Warpi introduces each encounter from the cockpit, followed by
+        two illustrated dinosaur pages. Open the sections below to
+        read more about the preview.
+      </p>
+
+      <!-- This text is part of the HTML, even when collapsed. -->
+      <details>
+        <summary>Brachiosaurus — explore the 3D pictures</summary>
+        <div class="detail-content">
+          <h3>Brachiosaurus Through the Time-Machine Windows</h3>
+          <p>
+            Look beyond Warpi and the cockpit controls to spot the
+            long-necked Brachiosaurus dinosaurs outside.
+            This scene introduces the dinosaur before the two closer views
+            that follow.
+          </p>
+
+          <h3>Brachiosaurus in a Prehistoric Landscape</h3>
+          <p>
+            The next two anaglyph images show Brachiosaurus among water,
+            trees and rocky scenery. With red/cyan glasses, compare
+            the foreground with the distant landscape and look for
+            the sense of depth.
+          </p>
+          <p>
+            Each dinosaur page also includes a short explanation beneath
+            the illustration. Use the fullscreen viewer for a larger
+            view of both the picture and its accompanying text.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>A time-travel adventure with a robot pilot</summary>
+        <div class="detail-content">
+          <h3>Meet Warpi, Your Pilot</h3>
+          <p>
+            Warpi guides you from the opening instructions into the
+            time-travel capsule. Once you are ready, use the green
+            start button on page 2 to continue your journey.
+          </p>
+
+          <h3>A Different Stop for Each Dinosaur</h3>
+          <p>
+            The story travels through time to meet dinosaurs in the
+            periods when they lived. Each new encounter starts aboard
+            the time machine, followed by two dinosaur illustrations
+            with information about the animal.
+          </p>
+        </div>
+      </details>
+
+      <div class="faq">
+        <h2>How Do 3D Glasses Work?</h2>
+        <p>
+          These red cyan 3D images combine two slightly different views
+          using red and cyan colour channels. The coloured lenses
+          filter the image so that each eye receives a different view.
+          Your brain combines those views to create a sense of depth.
+        </p>
+
+        <details>
+          <summary>Which glasses do I need for these dinosaur pictures?</summary>
+          <div class="detail-content">
+            <p>
+              Use red/cyan anaglyph glasses. These are often described
+              as red and blue 3D glasses. Follow the intended lens
+              orientation: red over the left eye and cyan over the right.
+              Polarized cinema glasses use a different system and
+              will not reveal the depth in these pictures.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can I view the pictures without 3D glasses?</summary>
+          <div class="detail-content">
+            <p>
+              Yes, you can browse the preview, but you will see
+              overlapping red and cyan outlines. The glasses are
+              needed to experience the intended depth effect.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Why try the fullscreen view?</summary>
+          <div class="detail-content">
+            <p>
+              Fullscreen gives the square book pages more space
+              while keeping their proportions intact. The larger
+              view can make details, text and the depth effect easier
+              to appreciate. The result also depends on your screen,
+              glasses and viewing distance.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="book-section" id="full-book"
+             aria-labelledby="book-title">
+      <p class="eyebrow">Your journey has only just begun</p>
+      <h2 id="book-title">A Dinosaur Book with 3D Glasses</h2>
+      <p>
+        Put on your own red/cyan glasses and continue the complete
+        <em>Dinosaur Anaglyph 3D Adventure</em> with Warpi.
+        Discover more dinosaurs, more illustrated encounters
+        and more stops through prehistoric time.
+      </p>
+      <p>
+        This website shares a free preview.
+        To follow the rest of the story, you will need the full ebook.
       </p>
 
       <button class="button primary" type="button" disabled>
@@ -613,7 +812,8 @@
       </button>
 
       <p class="small">
-        Purchase link coming soon. 3D glasses are not included.
+        Purchase link coming soon.
+        This is a digital book. 3D glasses are not included.
       </p>
     </section>
   </main>
@@ -639,7 +839,6 @@
 
       function showPage(index) {
         const focusWasOnStart = document.activeElement === imageStart;
-
         current = Math.max(0, Math.min(index, slides.length - 1));
 
         slides.forEach((slide, i) => {
@@ -661,7 +860,6 @@
           });
         }
 
-        // Keep keyboard focus on a visible control after the start button hides.
         if (focusWasOnStart && current !== 1) {
           next.focus({ preventScroll: true });
         }
@@ -669,10 +867,7 @@
 
       previous.addEventListener("click", () => showPage(current - 1));
       next.addEventListener("click", () => showPage(current + 1));
-
-      imageStart.addEventListener("click", () => {
-        showPage(2);
-      });
+      imageStart.addEventListener("click", () => showPage(2));
 
       function isExpanded() {
         return document.fullscreenElement === reader ||
@@ -681,17 +876,23 @@
 
       function syncFullscreenButton() {
         const active = isExpanded();
-
         fullscreen.textContent = active
           ? "✕ Exit fullscreen"
           : "⛶ View fullscreen";
-
         fullscreen.setAttribute("aria-pressed", String(active));
       }
 
       function leaveFallback() {
         reader.classList.remove("expanded");
+        reader.removeAttribute("role");
+        reader.removeAttribute("aria-modal");
         document.body.style.overflow = savedOverflow;
+
+        document.querySelectorAll("[data-reader-inert]").forEach(element => {
+          element.inert = false;
+          element.removeAttribute("data-reader-inert");
+        });
+
         syncFullscreenButton();
         fullscreen.focus({ preventScroll: true });
       }
@@ -716,33 +917,59 @@
             await reader.requestFullscreen();
             return;
           } catch (error) {
-            // Fall back to an expanded browser view.
+            // Use an expanded browser view if native fullscreen is unavailable.
           }
         }
 
         savedOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";
         reader.classList.add("expanded");
+        reader.setAttribute("role", "dialog");
+        reader.setAttribute("aria-modal", "true");
+
+        const outside = [
+          ...reader.parentElement.children,
+          ...document.body.children
+        ];
+
+        outside.forEach(element => {
+          if (
+            element === reader ||
+            element.contains(reader) ||
+            element.tagName === "SCRIPT" ||
+            element.inert
+          ) return;
+
+          element.inert = true;
+          element.setAttribute("data-reader-inert", "");
+        });
+
         syncFullscreenButton();
+        fullscreen.focus({ preventScroll: true });
       });
 
       document.addEventListener("fullscreenchange", syncFullscreenButton);
 
       document.addEventListener("keydown", event => {
-        if (event.key === "Escape" &&
-            reader.classList.contains("expanded")) {
+        if (
+          event.key === "Escape" &&
+          reader.classList.contains("expanded")
+        ) {
           leaveFallback();
           return;
         }
 
         if (event.altKey || event.ctrlKey || event.metaKey) return;
 
-        if (event.target.matches("input, textarea, select") ||
-            event.target.isContentEditable) return;
+        if (
+          event.target.matches("input, textarea, select") ||
+          event.target.isContentEditable
+        ) return;
 
-        // Keep Tab navigation inside the expanded fallback viewer.
-        if (event.key === "Tab" &&
-            reader.classList.contains("expanded")) {
+        if (
+          event.key === "Tab" &&
+          reader.classList.contains("expanded")
+        ) {
           const focusable = Array.from(
             reader.querySelectorAll("button:not(:disabled), a[href]")
           ).filter(element => element.getClientRects().length > 0);
@@ -761,7 +988,8 @@
         }
 
         const rect = reader.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight * .5 &&
+        const inView =
+          rect.top < window.innerHeight * .5 &&
           rect.bottom > window.innerHeight * .5;
 
         if (!inView && !isExpanded()) return;
