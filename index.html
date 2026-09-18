@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>3D Anaglyph Images of Dinosaurs | Dino 3D Adventure</title>
-  <meta name="description" content="Explore dinosaur 3D pictures with red and blue glasses. Join Warpi on a time-travel adventure and enjoy a free preview of our anaglyph dinosaur ebook.">
+  <meta name="description" content="Explore dinosaur 3D pictures with red and blue glasses. Meet T. rex and other prehistoric animals in a free 17-page anaglyph book preview with Warpi.">
   <link rel="canonical" href="https://dino3dadventure.com/">
   <meta name="theme-color" content="#061426">
 
@@ -225,7 +225,8 @@
       cursor: not-allowed;
     }
 
-    .button:hover:not(:disabled), .control:hover:not(:disabled) {
+    .button:hover:not(:disabled),
+    .control:hover:not(:disabled) {
       filter: brightness(1.12);
     }
 
@@ -344,6 +345,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 16px;
       margin-top: 14px;
     }
@@ -394,7 +396,6 @@
     .detail-content p { color: var(--muted); }
     .detail-content > h3:first-child { margin-top: 20px; }
     .detail-content > p:last-child { margin-bottom: 0; }
-
     .dino-details { margin-top: 12px; }
 
     .dino-details summary {
@@ -425,17 +426,18 @@
       height: 100dvh;
     }
 
-    .reader:fullscreen .toolbar, .reader.expanded .toolbar {
+    .reader:fullscreen .toolbar,
+    .reader.expanded .toolbar {
       width: 100%;
       flex-shrink: 0;
     }
 
-    .reader:fullscreen .stage, .reader.expanded .stage {
+    .reader:fullscreen .stage,
+    .reader.expanded .stage {
       flex: 1;
       min-height: 0;
     }
 
-    /* Captions and their expandable text disappear in fullscreen. */
     .reader:fullscreen figcaption,
     .reader.expanded figcaption,
     .reader:fullscreen .keyboard-hint,
@@ -443,11 +445,92 @@
       display: none;
     }
 
-    .reader:fullscreen .navigation, .reader.expanded .navigation {
+    .reader:fullscreen .navigation,
+    .reader.expanded .navigation {
       flex-shrink: 0;
     }
 
-    .info-section > p, .book-section p { color: var(--muted); }
+    .info-section > p, .book-section p {
+      color: var(--muted);
+    }
+
+    .shorts-section {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: clamp(20px,4vw,36px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      text-align: center;
+    }
+
+    .shorts-intro {
+      max-width: 720px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+    }
+
+    .shorts-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 22px;
+    }
+
+    .short-card { min-width: 0; }
+
+    .short-card h3 {
+      margin: 0 0 12px;
+      min-height: 2.8em;
+      font-size: 1rem;
+    }
+
+    .short-player {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #000;
+      border: 1px solid var(--line);
+    }
+
+    .short-player iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .short-card .button {
+      margin-top: 14px;
+      font-size: .9rem;
+    }
+
+    /* Compact visual introduction; longer reading follows the viewer. */
+    .visual-intro { padding: clamp(20px,3vw,30px); }
+    .visual-intro h1 { font-size: clamp(1.8rem,4.5vw,2.8rem); }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      gap: clamp(20px,4vw,36px);
+      align-items: center;
+    }
+    .hero-cover-link { display: block; line-height: 0; }
+    .hero-cover {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .hero-copy .lead { font-size: 1.15rem; }
+    .hero-copy .button { max-width: 100%; }
+    @media (max-width: 560px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 16px; }
+      .hero-cover { max-height: 260px; }
+      .hero-copy .lead { font-size: 1rem; margin-bottom: 14px; }
+      .hero-copy .small { margin-bottom: 0; }
+    }
 
     footer {
       padding: 18px 20px 35px;
@@ -465,6 +548,102 @@
       width: min(100%,var(--image-limit));
     }
 
+    /* T. rex title and picture scale together without cropping. */
+    .trex-artwork {
+      width: min(100%,calc((var(--image-limit) - 12px) / 1.29));
+      margin: auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .trex-artwork img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      max-height: none;
+    }
+
+    .trex-title { border-radius: 5px; }
+    .finale-caption { max-width: 900px; }
+    .finale-caption > h2 { margin: 20px 0 12px; }
+
+    .finale-card {
+      margin-top: 24px;
+      padding: clamp(20px,4vw,32px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #061426;
+      text-align: center;
+    }
+
+    .warpi-message {
+      display: grid;
+      grid-template-columns: minmax(130px,210px) minmax(0,1fr);
+      align-items: center;
+      gap: 24px;
+      text-align: left;
+    }
+
+    .warpi-portrait {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .warpi-message p { margin: 0 0 12px; }
+
+    .encounter-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0;
+      margin: 20px 0 24px;
+      list-style: none;
+    }
+
+    .encounter-list li {
+      padding: 7px 13px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      color: var(--gold);
+      background: #102339;
+    }
+
+    .restart-link {
+      padding: 9px 14px;
+      margin-top: 16px;
+      border: 0;
+      border-radius: 8px;
+      color: var(--cyan);
+      background: transparent;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .farewell-eyes {
+      display: block;
+      width: min(100%,620px);
+      height: auto;
+      margin: 26px auto 0;
+    }
+
+    @media (max-width: 700px) {
+      .shorts-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .short-card {
+        width: 100%;
+        max-width: 360px;
+        margin: auto;
+      }
+
+      .short-card h3 { min-height: 0; }
+    }
+
     @media (max-width: 560px) {
       .site-header { padding: 18px; gap: 12px; }
       .brand { gap: 10px; }
@@ -475,35 +654,26 @@
       .toolbar { gap: 10px; align-items: flex-start; }
       .toolbar .control { font-size: .78rem; flex-shrink: 0; }
       .control { padding: 10px 12px; font-size: .86rem; }
-      .navigation { gap: 8px; }
+      .navigation { gap: 6px; }
+      .navigation .control { padding: 8px; font-size: .78rem; }
+      #first-button { min-width: 80px; }
       #page-count { min-width: 80px; font-size: .8rem; }
       .detail-content { padding: 0 17px 17px; }
       summary { padding: 14px 16px; }
+
+      .warpi-message {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .warpi-portrait {
+        max-width: 190px;
+        margin: auto;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-    }
-
-    .shorts-section {
-      max-width: 1100px;
-      margin: 32px auto;
-      padding: clamp(20px,4vw,36px);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: var(--panel);
-      text-align: center;
-    }
-    .shorts-intro { max-width: 720px; margin: 0 auto 24px; color: var(--muted); }
-    .shorts-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }
-    .short-card { min-width: 0; }
-    .short-card h3 { margin: 0 0 12px; font-size: 1rem; }
-    .short-player { width: 100%; aspect-ratio: 9 / 16; overflow: hidden; border-radius: 14px; background: #000; border: 1px solid var(--line); }
-    .short-player iframe { display: block; width: 100%; height: 100%; border: 0; }
-    .short-card .button { margin-top: 14px; font-size: .9rem; }
-    @media (max-width: 700px) {
-      .shorts-grid { grid-template-columns: 1fr; gap: 30px; }
-      .short-card { width: 100%; max-width: 360px; margin: auto; }
     }
   </style>
 </head>
@@ -549,55 +719,25 @@
   </header>
 
   <main>
-    <section class="intro" aria-labelledby="intro-title">
-      <p class="eyebrow">Put on your glasses. Step back in time.</p>
+    <!-- VISUAL INTRODUCTION -->
+    <section class="intro visual-intro" aria-labelledby="intro-title">
       <h1 id="intro-title">3D Anaglyph Images of Dinosaurs</h1>
-
-      <p class="lead">
-        Climb aboard the time machine with Warpi, your robot pilot.
-        Explore anaglyph images of dinosaurs as you travel through
-        prehistoric time. Each stop brings you face to face with another
-        dinosaur, with illustrated pages about its world and way of life.
-      </p>
-
-      <div class="glasses-note" id="glasses">
-        <h2>3D Pictures for Red and Blue Glasses</h2>
-        <p>
-          To see the depth effect, you need
-          <strong>red/cyan anaglyph 3D glasses</strong>, often called
-          red and blue glasses. Regular cinema glasses will not work
-          with these images. Without the correct glasses, the red and
-          cyan outlines will appear doubled.
-        </p>
-        <p class="fullscreen-tip">
-          <strong>Try fullscreen for a more immersive view.</strong>
-          For the best viewing experience, use a laptop or desktop and
-          select “View fullscreen”. Each picture keeps its proportions
-          and the complete square stays visible. You can also explore
-          the preview on a phone or tablet.
-        </p>
+      <div class="hero-layout">
+        <a class="hero-cover-link" href="#reader" aria-label="Start the free dinosaur 3D book preview">
+          <img class="hero-cover"
+               src="images/dinosaur-anaglyph-3d-adventure-book-cover.jpg"
+               alt="Dinosaur Anaglyph 3D Adventure book cover with a roaring T. rex in a prehistoric forest."
+               fetchpriority="high" decoding="async">
+        </a>
+        <div class="hero-copy">
+          <p class="lead">Put on your red-cyan glasses and travel back in time with Warpi.</p>
+          <a class="button primary" href="#reader">Start the Free 3D Preview ↓</a>
+          <p class="small">Red-cyan 3D glasses required.</p>
+        </div>
       </div>
-
-      <p class="lead">
-        Enjoy the opening of <em>Dinosaur Anaglyph 3D Adventure</em>
-        in this free online preview. This is a sample of the book;
-        the complete journey continues in the full ebook.
-        No printing needed.
-      </p>
-
-      <div class="actions">
-        <a class="button primary" href="#reader">Start your adventure ↓</a>
-        <button class="button" type="button" disabled>
-          Get the ebook on Google Books
-        </button>
-      </div>
-
-      <p class="preview-note">
-        Explore the first 7 pages.
-        More pages will be added to complete the 15-page preview.
-      </p>
     </section>
 
+    <!-- BOOK VIEWER -->
     <section class="reader" id="reader" aria-labelledby="reader-title">
       <div class="toolbar">
         <h2 class="reader-title" id="reader-title">
@@ -621,14 +761,13 @@
           </figcaption>
         </figure>
 
-        <!-- PAGE 2: WARPI INTRO AND START BUTTON -->
+        <!-- PAGE 2: WARPI INTRODUCTION -->
         <figure class="slide">
           <div class="intro-page-layout">
             <img class="page-image"
                  src="images/anaglyph-3d-glasses-introduction-warpy.jpg"
-                 alt="Warpi the robot introduces the 3D glasses instructions inside the time-travel capsule."
+                 alt="Warpi the robot explains how to prepare for the dinosaur adventure with red-cyan 3D glasses inside the time-travel capsule."
                  loading="lazy" decoding="async">
-
             <button class="image-next-button js-only"
                     id="image-start-button" type="button"
                     aria-label="Start the time-machine adventure: go to page 3">
@@ -657,7 +796,7 @@
         <figure class="slide">
           <img class="page-image"
                src="images/dinosaur-time-travel-cockpit-anaglyph-3d.jpg"
-               alt="Warpi in the time-machine cockpit with Earth ahead as the journey through time and space begins."
+               alt="Warpi the robot pilot inside a time-machine cockpit with Earth ahead as the dinosaur time-travel adventure begins."
                loading="lazy" decoding="async">
           <figcaption>
             Travel back through time with Warpi at the controls.
@@ -668,39 +807,32 @@
         <figure class="slide">
           <img class="page-image"
                src="images/brachiosaurus-time-machine-anaglyph-3d.jpg"
-               alt="Warpi at the controls of a time machine overlooking Brachiosaurus dinosaurs and flying reptiles in red-cyan 3D."
+               alt="Warpi pilots a time machine overlooking long-necked Brachiosaurus dinosaurs, with flying reptiles overhead, in red-cyan 3D."
                loading="lazy" decoding="async">
           <figcaption>
             Our first encounter: Brachiosaurus beyond the cockpit windows.
           </figcaption>
         </figure>
 
-        <!-- PAGE 6: FIRST BRACHIOSAURUS PICTURE AND ITS TEXT -->
+        <!-- PAGE 6: BRACHIOSAURUS PICTURE 1 -->
         <figure class="slide">
           <img class="page-image"
                src="images/brachiosaurus-prehistoric-lake-anaglyph-3d.jpg"
-               alt="Brachiosaurus standing in a prehistoric lake surrounded by forest and rocky cliffs, in red-cyan anaglyph 3D."
+               alt="A long-necked Brachiosaurus dinosaur standing in a prehistoric lake surrounded by forest and rocky cliffs, in red-cyan anaglyph 3D."
                loading="lazy" decoding="async">
-
           <figcaption>
             <p class="scene-caption">
               A closer look at Brachiosaurus in a prehistoric lake.
             </p>
-
             <details class="dino-details">
-              <summary>
-                Read about Brachiosaurus — a giant plant-eater
-              </summary>
-
+              <summary>Read about Brachiosaurus — a giant plant-eater</summary>
               <div class="detail-content">
                 <h3>Brachiosaurus: A Long Neck and a Giant Appetite</h3>
-
                 <p>
                   Brachiosaurus was an incredible dinosaur and it was
                   truly enormous. In fact, it was one of the largest
                   creatures ever to walk the Earth!
                 </p>
-
                 <p>
                   One of the most remarkable things about Brachiosaurus
                   was its long neck, which it used to reach high into
@@ -708,58 +840,486 @@
                   they could feast on vegetation that other dinosaurs
                   couldn't reach, like a giant salad bar.
                 </p>
-
                 <p>
                   Brachiosaurus had a relatively small head compared
-                  to its massive body and long neck. It was a gentle
-                  giant, preferring to graze on plants rather than
-                  hunt for meat.
+                  to its massive body and long neck. This giant
+                  ate plants rather than hunting other animals for meat.
                 </p>
               </div>
             </details>
           </figcaption>
         </figure>
 
-        <!-- PAGE 7: SECOND BRACHIOSAURUS PICTURE AND ITS TEXT -->
+        <!-- PAGE 7: BRACHIOSAURUS PICTURE 2 -->
         <figure class="slide">
           <img class="page-image"
                src="images/brachiosaurus-tropical-river-anaglyph-3d.jpg"
-               alt="Brachiosaurus wading through a tropical river with palm trees and distant mountains, in anaglyph 3D."
+               alt="Brachiosaurus wading through a tropical river, its long neck rising above the water, with palm trees and distant mountains in anaglyph 3D."
                loading="lazy" decoding="async">
-
           <figcaption>
             <p class="scene-caption">
               Explore another Brachiosaurus scene before continuing the journey.
             </p>
-
             <details class="dino-details">
-              <summary>
-                Read about Brachiosaurus — standing beside a giant
-              </summary>
-
+              <summary>Read about Brachiosaurus — standing beside a giant</summary>
               <div class="detail-content">
                 <h3>Brachiosaurus: Standing Beside a Giant</h3>
-
                 <p>
                   Imagine standing next to a Brachiosaurus—its head
                   would be high up in the trees, and you'd need a
                   telescope to see its eyes! These magnificent
                   creatures would have towered above you.
                 </p>
-
                 <p>
-                  They also had long tails, but not for whacking
-                  things like some other dinosaurs. Their tails
-                  helped them balance their huge bodies and made
-                  them even more impressive.
+                  They also had long tails extending behind their
+                  huge bodies. Picture the whole animal, from the
+                  tip of its tail to its tiny head high above.
+                  What an impressive sight from our time machine!
                 </p>
               </div>
             </details>
           </figcaption>
         </figure>
+
+        <!-- PAGE 8: DILOPHOSAURUS TIME MACHINE -->
+        <figure class="slide">
+          <img class="page-image"
+               src="images/dilophosaurus-time-machine-anaglyph-3d.jpg"
+               alt="Warpi pilots the time machine as a colourful, imagined Dilophosaurus dinosaur with a neck frill peers through the cockpit windows in anaglyph 3D."
+               loading="lazy" decoding="async">
+          <figcaption>
+            Back into the time machine!
+            Warpi takes us to the Early Jurassic to meet Dilophosaurus.
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 9: DILOPHOSAURUS PICTURE 1 -->
+        <figure class="slide">
+          <img class="page-image"
+               src="images/dilophosaurus-head-close-up-anaglyph-3d.jpg"
+               alt="Close-up of a colourful Dilophosaurus dinosaur with a bright eye, textured scales and head ornaments against forest foliage in red-cyan 3D."
+               loading="lazy" decoding="async">
+          <figcaption>
+            <p class="scene-caption">
+              Meet Dilophosaurus — a dinosaur with a distinctive double crest.
+            </p>
+            <details class="dino-details">
+              <summary>Read about Dilophosaurus — crests and movie myths</summary>
+              <div class="detail-content">
+                <h3>Dilophosaurus: Two Crests and a Big-Screen Myth</h3>
+                <p>
+                  Dilophosaurus was a remarkable dinosaur with some
+                  unusual features. It was much bigger than its movie
+                  appearances might suggest: this impressive predator
+                  could reach about 6 metres (20 feet) in length!
+                </p>
+                <p>
+                  One of its most striking features was the pair of
+                  crests on its head. These may have helped it display
+                  to other dinosaurs, perhaps to attract a mate.
+                  Scientists are still exploring exactly how those
+                  crests were used.
+                </p>
+                <p>
+                  Now, here's a fun fact: Dilophosaurus is sometimes
+                  shown in movies as a venom-spitting dinosaur.
+                  But there is no solid evidence that it could spit
+                  venom. Its powerful jaws made it a formidable
+                  predator without that movie trick!
+                </p>
+                <p class="small">
+                  Our illustrations bring the adventure to life with
+                  imaginative colours and features. The decorative neck
+                  frill is an artistic addition, not an established
+                  feature of the real dinosaur.
+                </p>
+              </div>
+            </details>
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 10: DILOPHOSAURUS PICTURE 2 -->
+        <figure class="slide">
+          <img class="page-image"
+               src="images/dilophosaurus-forest-portrait-anaglyph-3d.jpg"
+               alt="An imagined Dilophosaurus dinosaur looking to the right with sharp teeth, a long neck and colourful frill in a dark forest, rendered in anaglyph 3D."
+               loading="lazy" decoding="async">
+          <figcaption>
+            <p class="scene-caption">
+              Discover what Dilophosaurus ate and the prehistoric world it lived in.
+            </p>
+            <details class="dino-details">
+              <summary>Read about Dilophosaurus — food and the Early Jurassic</summary>
+              <div class="detail-content">
+                <h3>Dilophosaurus: A Meat-Eater in the Early Jurassic</h3>
+                <p>
+                  Dilophosaurus was a carnivore, which means it ate
+                  other animals. Its sharp teeth and powerful jaws
+                  helped it tackle its meals. Chomp! Scientists cannot
+                  give us a complete menu, but this dinosaur was well
+                  equipped for a meat-eating life.
+                </p>
+                <p>
+                  This dinosaur lived during the Early Jurassic period,
+                  a time when the Earth looked quite different from
+                  today. Imagine travelling with Warpi to a prehistoric
+                  landscape of rivers and vegetation, with pterosaurs
+                  — flying reptiles — overhead.
+                </p>
+                <p>
+                  Look beyond the dinosaur in this 3D picture and
+                  imagine the wider world outside our time-machine
+                  windows. What might we discover at the next stop?
+                </p>
+              </div>
+            </details>
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 11: EUOPLOCEPHALUS TIME MACHINE -->
+        <figure class="slide">
+          <img class="page-image"
+               src="images/euoplocephalus-time-machine-anaglyph-3d.jpg"
+               alt="Warpi the robot pilot watches an imagined armored Euoplocephalus dinosaur pass close to the time-machine windows in red-cyan 3D."
+               loading="lazy" decoding="async">
+          <figcaption>
+            Next stop: the Late Cretaceous.
+            An armored dinosaur appears outside Warpi's time machine!
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 12: EUOPLOCEPHALUS PICTURE 1 -->
+        <figure class="slide">
+          <img class="page-image"
+               src="images/euoplocephalus-armored-dinosaur-3d.jpg"
+               alt="An imagined Euoplocephalus armored dinosaur with a broad body, textured skin and prominent back spikes standing in a forest, in anaglyph 3D."
+               loading="lazy" decoding="async">
+          <figcaption>
+            <p class="scene-caption">
+              Meet Euoplocephalus — a plant-eating dinosaur with impressive armor.
+            </p>
+            <details class="dino-details">
+              <summary>Read about Euoplocephalus — armor and a clubbed tail</summary>
+              <div class="detail-content">
+                <h3>Euoplocephalus: A Walking Fortress</h3>
+                <p>
+                  Euoplocephalus was like the tank of the dinosaur
+                  world! Tough, bony plates formed armor across its
+                  body, giving this plant-eater the appearance of a
+                  walking fortress.
+                </p>
+                <p>
+                  But that wasn't all. At the end of its tail was
+                  a heavy, bony club. Imagine that tail swinging
+                  from side to side. Whoosh! It was a striking feature
+                  of this armored dinosaur.
+                </p>
+                <p>
+                  Scientists study how these tail clubs were used.
+                  They may have helped against attackers, and evidence
+                  from related armored dinosaurs suggests they could
+                  also have been used in clashes with one another.
+                </p>
+                <p class="small">
+                  This is an imaginative illustration. The dramatic
+                  spikes and other details add to the adventure;
+                  the artwork is not an exact scientific reconstruction.
+                </p>
+              </div>
+            </details>
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 13: EUOPLOCEPHALUS PICTURE 2 -->
+        <figure class="slide">
+          <img class="page-image"
+               src="images/euoplocephalus-dinosaur-head-close-up-3d.jpg"
+               alt="Close-up of an imagined Euoplocephalus dinosaur head with bony-looking armor, a bright eye and large spikes beside forest leaves, in red-cyan 3D."
+               loading="lazy" decoding="async">
+          <figcaption>
+            <p class="scene-caption">
+              Take a closer look at Euoplocephalus and discover its plant-eating life.
+            </p>
+            <details class="dino-details">
+              <summary>Read about Euoplocephalus — plants and prehistoric life</summary>
+              <div class="detail-content">
+                <h3>Euoplocephalus: A Plant-Eater Close to the Ground</h3>
+                <p>
+                  Behind all that armor was a herbivore—a dinosaur
+                  that ate plants. With its head close to the ground,
+                  Euoplocephalus could reach low-growing vegetation.
+                  Think of it as a prehistoric lawnmower, stopping
+                  for a leafy snack along the way!
+                </p>
+                <p>
+                  Picture a broad, heavy body carried on four sturdy
+                  legs. This dinosaur didn't need to stretch high
+                  into the treetops like Brachiosaurus. Its meals
+                  were much closer to its feet.
+                </p>
+                <p>
+                  Euoplocephalus lived during the Late Cretaceous
+                  period. Imagine watching this armored plant-eater
+                  wander past the time machine, pausing to feed
+                  while Warpi points out its unusual features.
+                  What a visitor from another world!
+                </p>
+              </div>
+            </details>
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 14: PTERANODON TIME MACHINE -->
+        <figure class="slide">
+          <img class="page-image"
+               src="images/pteranodon-time-machine-anaglyph-3d.jpg"
+               alt="Warpi the robot pilot watches a huge Pteranodon flying above the time-machine windows, with a green prehistoric landscape beyond, in anaglyph 3D."
+               loading="lazy" decoding="async">
+          <figcaption>
+            Look up! Warpi takes us to the Late Cretaceous to meet
+            Pteranodon, a flying reptile from the age of dinosaurs.
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 15: PTERANODON PICTURE 1 -->
+        <figure class="slide">
+          <img class="page-image"
+               src="images/pteranodon-flying-reptile-3d.jpg"
+               alt="An orange-brown Pteranodon flying with its wings spread and beak open above a mountainous landscape, with distant flying reptiles, in red-cyan 3D."
+               loading="lazy" decoding="async">
+          <figcaption>
+            <p class="scene-caption">
+              Meet Pteranodon — spread your imagination and explore the prehistoric skies.
+            </p>
+            <details class="dino-details">
+              <summary>Read about Pteranodon — wings and prehistoric flight</summary>
+              <div class="detail-content">
+                <h3>Pteranodon: A Flying Reptile from the Age of Dinosaurs</h3>
+                <p>
+                  Pteranodon was a fascinating creature that lived during
+                  the time of the dinosaurs, but wasn't actually a dinosaur.
+                  It was a type of flying reptile called a pterosaur.
+                  So although people often call it a “flying dinosaur,”
+                  it belonged to a different group of prehistoric animals.
+                </p>
+                <p>
+                  Imagine looking out of Warpi's time machine and seeing
+                  those enormous wings overhead! Pteranodon longiceps
+                  could have a wingspan of about 6 metres (20 feet).
+                  Stretch out your arms and imagine just how much wider
+                  that would be.
+                </p>
+                <p>
+                  With its long wings, Pteranodon could soar over ancient
+                  seas. Look at this 3D picture and imagine following it
+                  through the sky, with the world far below and the next
+                  adventure waiting beyond the clouds.
+                </p>
+              </div>
+            </details>
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 16: PTERANODON PICTURE 2 -->
+        <figure class="slide">
+          <img class="page-image"
+               src="images/pteranodon-wings-spread-3d.jpg"
+               alt="Pteranodon with wide-spread wings, an open beak and hanging legs, flying toward the viewer above trees with other pterosaurs in the sky, in anaglyph 3D."
+               loading="lazy" decoding="async">
+          <figcaption>
+            <p class="scene-caption">
+              Take a closer look at Pteranodon and discover its crest and fish-eating life.
+            </p>
+            <details class="dino-details">
+              <summary>Read about Pteranodon — its head crest and fishy meals</summary>
+              <div class="detail-content">
+                <h3>Pteranodon: A Dramatic Crest and a Taste for Fish</h3>
+                <p>
+                  One of the most amazing things about Pteranodon was
+                  its crest, like a fancy hat on its head! In
+                  Pteranodon longiceps, this striking crest pointed
+                  backward. Scientists explore how pterosaur crests
+                  may have helped with display, perhaps attracting
+                  mates or recognising others of their kind.
+                </p>
+                <p>
+                  Fish were on the menu for this flying reptile.
+                  Imagine it soaring above an ancient sea, searching
+                  the water for its next meal. Its long, toothless
+                  beak was quite different from the toothy jaws
+                  of the meat-eating dinosaurs we met earlier.
+                </p>
+                <p>
+                  Pteranodon lived long before people, so a real-life
+                  meeting wasn't possible. But aboard our imaginary
+                  time machine, we can watch it glide past the windows.
+                  Keep your glasses on — what a view of prehistoric life!
+                </p>
+              </div>
+            </details>
+          </figcaption>
+        </figure>
+
+        <!-- PAGE 17: T. REX TEASER AND FAREWELL -->
+        <figure class="slide" id="trex-preview">
+          <div class="trex-artwork">
+            <img class="trex-title"
+                 src="images/tyrannosaurus-rex-3d-title.jpg"
+                 width="1310" height="254"
+                 alt="Tyrannosaurus Rex"
+                 loading="lazy" decoding="async">
+
+            <img class="page-image"
+                 src="images/t-rex-dinosaur-anaglyph-3d.jpg"
+                 width="1715" height="1879"
+                 alt="A roaring T. rex with open jaws and sharp teeth wading through a forest stream, shown as a red-cyan anaglyph 3D dinosaur picture."
+                 loading="lazy" decoding="async">
+          </div>
+
+          <figcaption class="finale-caption">
+            <h2>T. Rex 3D Picture — Meet Tyrannosaurus Rex</h2>
+            <p class="scene-caption">
+              One last roar before you go! Put on your red/cyan glasses
+              and try fullscreen to see this Tyrannosaurus rex picture
+              at its largest. This is a glimpse of the encounters still
+              waiting in the full book.
+            </p>
+
+            <details class="dino-details">
+              <summary>Read about T. rex — teeth, size and prehistoric life</summary>
+              <div class="detail-content">
+                <h3>A Giant Outside the Time-Machine Window</h3>
+                <p>
+                  Imagine Warpi bringing the time machine to a gentle stop.
+                  Beyond the window, a huge head appears between the trees.
+                  A mouth opens, revealing rows of teeth. Meet Tyrannosaurus
+                  rex, usually called T. rex — one of the most recognisable
+                  meat-eating dinosaurs. Our last 3D dinosaur picture gives
+                  you a glimpse of this remarkable animal before the free
+                  preview ends.
+                </p>
+
+                <h3>How Big Was Tyrannosaurus Rex?</h3>
+                <p>
+                  A large T. rex could reach around 12 metres (40 feet)
+                  in length. Imagine measuring that distance from its nose
+                  all the way to the end of its tail! It walked on two
+                  powerful back legs, while its arms looked surprisingly
+                  small beside its enormous body. From our imaginary
+                  cockpit, even one passing dinosaur would be quite a sight.
+                </p>
+
+                <h3>What Did T. Rex Eat?</h3>
+                <p>
+                  T. rex was a carnivore, which means it ate other animals.
+                  Its strong jaws and serrated teeth helped it tear through
+                  meat and crush bone. Those teeth were much more than a
+                  frightening smile: they were tools for feeding. Look
+                  closely at the open jaws in the illustration and imagine
+                  the scale of the real animal.
+                </p>
+
+                <h3>When and Where Did It Live?</h3>
+                <p>
+                  Tyrannosaurus rex lived around 68–66 million years ago,
+                  near the end of the Late Cretaceous period, in what is
+                  now western North America. Warpi needs the time machine
+                  to visit each animal in its own prehistoric world.
+                </p>
+
+                <h3>Explore This T. Rex Picture in 3D</h3>
+                <p>
+                  These overlapping red and cyan outlines are part of
+                  the anaglyph effect. With red and blue glasses of the
+                  correct red/cyan type, the two views create a sense of
+                  depth. Choose “View fullscreen”, keep the whole picture
+                  visible, and imagine looking through the window. Ready
+                  for more? Warpi has six further encounters waiting in
+                  the complete dinosaur ebook, including T. rex.
+                </p>
+              </div>
+            </details>
+
+            <div class="finale-card">
+              <div class="warpi-message">
+                <img class="warpi-portrait"
+                     src="images/warpi-robot-pilot-anaglyph-3d.png"
+                     width="1613" height="1090"
+                     alt="Warpi, the friendly robot pilot, saying farewell in red-cyan anaglyph 3D."
+                     loading="lazy" decoding="async">
+                <div>
+                  <p class="eyebrow">A message from your pilot</p>
+                  <h2>How Was Your Journey?</h2>
+                  <p>
+                    “What a journey! Which encounter was your favourite?
+                    The towering Brachiosaurus, the crested Dilophosaurus,
+                    the armored Euoplocephalus, or those enormous wings overhead?
+                  </p>
+                  <p>
+                    Don't leave your glasses behind just yet. There are
+                    more dinosaurs waiting beyond the windows of our time
+                    machine — and our adventure isn't over!”
+                  </p>
+                  <p>— Warpi, your robot pilot</p>
+                </div>
+              </div>
+
+              <h3>Six More Encounters in the Complete Book</h3>
+              <p>
+                This T. rex is just a teaser. Continue travelling with
+                Warpi to visit these six dinosaurs in their own prehistoric
+                worlds, with more 3D illustrations and stories about
+                when they lived and what they ate.
+              </p>
+
+              <ul class="encounter-list" aria-label="Further dinosaurs in the full ebook">
+                <li>Spinosaurus</li>
+                <li>Stegosaurus</li>
+                <li>Struthiomimus</li>
+                <li>Tyrannosaurus rex (T. rex)</li>
+                <li>Triceratops</li>
+                <li>Velociraptor</li>
+              </ul>
+
+              <p><strong>Your next stop is waiting. Shall we go?</strong></p>
+
+              <div class="actions">
+                <a class="button primary"
+                   href="https://play.google.com/store/books/details?id=9nrcEAAAQBAJ"
+                   target="_blank" rel="noopener noreferrer">
+                  Get the ebook on Google Play Books ↗
+                </a>
+                <a class="button"
+                   href="https://books.apple.com/us/book/dinosaur-3d-adventure-meet-the-top-10-mighty/id6469320374"
+                   target="_blank" rel="noopener noreferrer">
+                  Get the ebook on Apple Books ↗
+                </a>
+              </div>
+
+              <p class="small">
+                Digital ebook. Red/cyan 3D glasses are not included.
+              </p>
+
+              <button class="restart-link js-only" id="restart-adventure" type="button">
+                ⏮ Start the adventure again
+              </button>
+
+              <img class="farewell-eyes"
+                   src="images/dinosaur-eyes-anaglyph-3d-farewell.png"
+                   width="3256" height="1556"
+                   alt="When will we see you again? Two mysterious green reptile eyes stare out of the darkness in anaglyph 3D."
+                   loading="lazy" decoding="async">
+            </div>
+          </figcaption>
+        </figure>
       </div>
 
       <nav class="navigation js-only" aria-label="Preview page navigation">
+        <button class="control" id="first-button" type="button"
+                aria-label="Return to the first page">
+          ⏮ First page
+        </button>
+
         <button class="control" id="previous-button" type="button">
           ← Previous
         </button>
@@ -774,21 +1334,79 @@
 
       <p class="keyboard-hint js-only">
         Use the ← and → arrow keys while browsing the preview.
-        Open “Read about Brachiosaurus” beneath a dinosaur picture
+        Open the reading panel beneath a dinosaur picture
         to read its accompanying text.
       </p>
     </section>
 
-    <!-- GENERAL INFORMATION REMAINS OUTSIDE THE BOOK VIEWER -->
+    <!-- INTRODUCTION AND VIEWING TIPS -->
+    <section class="info-section" aria-labelledby="adventure-info-title">
+      <h2 id="adventure-info-title">Your Dinosaur Adventure with Warpi</h2>
+
+      <p class="lead">
+        Climb aboard the time machine with Warpi, your robot pilot.
+        Explore anaglyph images of dinosaurs as you travel through
+        prehistoric time. Meet the long-necked Brachiosaurus,
+        the meat-eating Dilophosaurus and the armored Euoplocephalus.
+        Then look up to meet Pteranodon, a flying reptile from the age
+        of dinosaurs, with illustrated pages about their worlds and ways of life.
+      </p>
+
+      <div class="glasses-note" id="glasses">
+        <h2>3D Pictures for Red and Blue Glasses</h2>
+        <p>
+          To see the depth effect, you need
+          <strong>red/cyan anaglyph 3D glasses</strong>, often called
+          red and blue glasses. Regular cinema glasses will not work
+          with these images. Without the correct glasses, the red and
+          cyan outlines will appear doubled.
+        </p>
+        <p class="fullscreen-tip">
+          <strong>Try fullscreen for a more immersive view.</strong>
+          For the best viewing experience, use a laptop or desktop and
+          select “View fullscreen”. Each picture keeps its proportions
+          and the complete illustration stays visible. You can also explore
+          the preview on a phone or tablet.
+        </p>
+      </div>
+
+      <p class="lead">
+        Enjoy the opening of <em>Dinosaur Anaglyph 3D Adventure</em>
+        in this free online preview. This is a sample of the book;
+        the complete journey continues in the full ebook.
+        No printing needed.
+      </p>
+
+      <div class="actions">
+        <a class="button primary" href="#reader">Start your adventure ↓</a>
+        <a class="button"
+           href="https://play.google.com/store/books/details?id=9nrcEAAAQBAJ"
+           target="_blank" rel="noopener noreferrer">
+          Get the ebook on Google Play Books ↗
+        </a>
+        <a class="button"
+           href="https://books.apple.com/us/book/dinosaur-3d-adventure-meet-the-top-10-mighty/id6469320374"
+           target="_blank" rel="noopener noreferrer">
+          Get the ebook on Apple Books ↗
+        </a>
+      </div>
+
+      <p class="preview-note">
+        Explore <span id="preview-total">17</span> preview pages,
+        including a final T. rex teaser. 3D glasses are not included.
+      </p>
+    </section>
+
+    <!-- GENERAL INFORMATION -->
     <section class="info-section" aria-labelledby="glasses-title">
       <p class="eyebrow">Discover the depth behind the pictures</p>
       <h2 id="glasses-title">How Do 3D Glasses Work?</h2>
 
       <p>
         These red cyan 3D images combine two slightly different views
-        using red and cyan colour channels. The coloured lenses
-        filter the image so that each eye receives a different view.
-        Your brain combines those views to create a sense of depth.
+        using red and cyan colour channels. The coloured lenses filter
+        the image so that each eye receives a different view. Your
+        brain combines those views to create a sense of depth.
       </p>
 
       <details>
@@ -819,16 +1437,17 @@
         <summary>Why try the fullscreen view?</summary>
         <div class="detail-content">
           <p>
-            Fullscreen gives the square book pages more space
-            while keeping their proportions intact. The larger
-            view can make details, text and the depth effect easier
-            to appreciate. The result also depends on your screen,
+            Fullscreen gives the book pages more space while
+            keeping their proportions intact. The larger view can
+            make details, text and the depth effect easier to
+            appreciate. The result also depends on your screen,
             glasses and viewing distance.
           </p>
           <p>
-            The expandable reading text is hidden in fullscreen
-            to leave more room for the illustration. Exit fullscreen
-            to open the text beneath the picture.
+            The expandable reading text and farewell message are hidden
+            in fullscreen to leave more room for the illustration.
+            Exit fullscreen to read the text beneath the picture
+            and find the links to the complete ebook.
           </p>
         </div>
       </details>
@@ -838,107 +1457,156 @@
         <div class="detail-content">
           <h3>Your Robot Pilot Through Prehistoric Time</h3>
           <p>
-            Warpi guides you from the opening instructions into
-            the time-travel capsule. The story travels through
-            time to meet dinosaurs in the periods when they lived.
+            Warpi guides you from the opening instructions into the
+            time-travel capsule. The story travels through time
+            to meet dinosaurs in the periods when they lived.
           </p>
           <p>
             Each new encounter starts aboard the time machine,
-            followed by two dinosaur illustrations with information
-            about the animal.
+            followed by two illustrations with information
+            about the animal. In this preview, you can meet
+            Brachiosaurus, Dilophosaurus and Euoplocephalus,
+            plus the flying reptile Pteranodon and a final T. rex teaser.
           </p>
         </div>
       </details>
     </section>
 
+    <!-- THREE YOUTUBE SHORTS -->
     <section class="shorts-section" id="videos" aria-labelledby="videos-title">
       <p class="eyebrow">Keep your glasses on</p>
       <h2 id="videos-title">Watch Anaglyph 3D Videos</h2>
+
       <p class="shorts-intro">
-        Enjoy three of my favourite anaglyph 3D Shorts.
-        Watch them here or open them on YouTube. Use your red/cyan glasses
-        and try each video's fullscreen control for a larger view.
+        Take a short detour into tunnels and space with three of my
+        favourite anaglyph 3D Shorts. Watch them here or open them on
+        YouTube. Use your red/cyan glasses and try each video's
+        fullscreen control for a larger view.
       </p>
+
       <div class="shorts-grid">
         <article class="short-card" aria-labelledby="short-title-1">
           <h3 id="short-title-1">Fall Into the Infinite Tunnel</h3>
           <div class="short-player">
             <iframe
               src="https://www.youtube-nocookie.com/embed/wDywWy3-YxE?playsinline=1"
-              title="Fall Into the Infinite Tunnel — YouTube video player"
+              title="Fall Into the Infinite Tunnel — anaglyph 3D YouTube Short"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              allowfullscreen></iframe>
+              allowfullscreen>
+            </iframe>
           </div>
-          <a class="button" href="https://www.youtube.com/shorts/wDywWy3-YxE"
+          <a class="button"
+             href="https://www.youtube.com/shorts/wDywWy3-YxE"
              target="_blank" rel="noopener noreferrer"
-             aria-label="Watch Fall Into the Infinite Tunnel on YouTube (opens in a new tab)">
+             aria-label="Watch Fall Into the Infinite Tunnel on YouTube, opens in a new tab">
             Watch on YouTube ↗
           </a>
         </article>
+
         <article class="short-card" aria-labelledby="short-title-2">
           <h3 id="short-title-2">Galactic Descent</h3>
           <div class="short-player">
             <iframe
               src="https://www.youtube-nocookie.com/embed/mPIT2V6bM2E?playsinline=1"
-              title="Galactic Descent — YouTube video player"
+              title="Galactic Descent — anaglyph 3D YouTube Short"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              allowfullscreen></iframe>
+              allowfullscreen>
+            </iframe>
           </div>
-          <a class="button" href="https://www.youtube.com/shorts/mPIT2V6bM2E"
+          <a class="button"
+             href="https://www.youtube.com/shorts/mPIT2V6bM2E"
              target="_blank" rel="noopener noreferrer"
-             aria-label="Watch Galactic Descent on YouTube (opens in a new tab)">
+             aria-label="Watch Galactic Descent on YouTube, opens in a new tab">
             Watch on YouTube ↗
           </a>
         </article>
+
         <article class="short-card" aria-labelledby="short-title-3">
           <h3 id="short-title-3">Vintage Sun &amp; Spinning Moon</h3>
           <div class="short-player">
             <iframe
               src="https://www.youtube-nocookie.com/embed/ZNtMy2amHv0?playsinline=1"
-              title="Vintage Sun &amp; Spinning Moon — YouTube video player"
+              title="Vintage Sun and Spinning Moon — anaglyph 3D YouTube Short"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              allowfullscreen></iframe>
+              allowfullscreen>
+            </iframe>
           </div>
-          <a class="button" href="https://www.youtube.com/shorts/ZNtMy2amHv0"
+          <a class="button"
+             href="https://www.youtube.com/shorts/ZNtMy2amHv0"
              target="_blank" rel="noopener noreferrer"
-             aria-label="Watch Vintage Sun &amp; Spinning Moon on YouTube (opens in a new tab)">
+             aria-label="Watch Vintage Sun and Spinning Moon on YouTube, opens in a new tab">
             Watch on YouTube ↗
           </a>
         </article>
       </div>
     </section>
 
-    <section class="book-section" id="full-book"
-             aria-labelledby="book-title">
+    <!-- CLOSING SUMMARY AND BOOK LINKS -->
+    <section class="book-section" id="full-book" aria-labelledby="book-title">
       <p class="eyebrow">Your journey has only just begun</p>
       <h2 id="book-title">A Dinosaur Book with 3D Glasses</h2>
 
       <p>
         Your journey through prehistoric time doesn't have to end here.
-        Explore dinosaur 3D pictures, watch anaglyph 3D videos and travel
-        with Warpi to meet more remarkable creatures. These images are
-        designed for red/cyan glasses, often called red and blue 3D glasses.
-      </p>
-      <p>
-        Enjoyed the free preview? Continue the adventure in the full
-        <em>Dinosaur Anaglyph 3D Adventure</em> ebook, with more illustrated
-        encounters and dinosaur facts to discover.
+        Explore dinosaur 3D pictures, watch anaglyph 3D videos and
+        travel with Warpi to meet more remarkable creatures.
+        These images are designed for red/cyan glasses,
+        often called red and blue 3D glasses.
       </p>
 
-      <button class="button primary" type="button" disabled>
-        Get the full ebook on Google Books
-      </button>
+      <p>
+        From the long neck of Brachiosaurus to the crests of
+        Dilophosaurus, the armor of Euoplocephalus and the wings of
+        Pteranodon, every stop reveals something different.
+        Enjoyed the free preview? Continue the adventure in the full
+        <em>Dinosaur Anaglyph 3D Adventure</em> ebook, with more
+        illustrated encounters with Spinosaurus, Stegosaurus,
+        Struthiomimus, Tyrannosaurus rex, Triceratops and Velociraptor.
+      </p>
+
+      <div class="actions">
+        <a class="button primary"
+           href="https://play.google.com/store/books/details?id=9nrcEAAAQBAJ"
+           target="_blank" rel="noopener noreferrer">
+          Get the ebook on Google Play Books ↗
+        </a>
+        <a class="button"
+           href="https://books.apple.com/us/book/dinosaur-3d-adventure-meet-the-top-10-mighty/id6469320374"
+           target="_blank" rel="noopener noreferrer">
+          Get the ebook on Apple Books ↗
+        </a>
+      </div>
 
       <p class="small">
-        Purchase link coming soon.
-        This is a digital book. 3D glasses are not included.
+        This is a digital book. Red/cyan 3D glasses are not included.
+        Book links open in a new tab.
       </p>
+    </section>
+
+    <!-- RELATED ANAGLYPH ART GALLERY -->
+    <section class="book-section" id="art-gallery" aria-labelledby="art-gallery-title">
+      <p class="eyebrow">Keep exploring with your 3D glasses</p>
+      <h2 id="art-gallery-title">Explore More 3D Pictures with Glasses</h2>
+      <p class="lead">
+        Discover a free gallery of 3D anaglyph art featuring flowers,
+        animals, fantasy scenes and vintage portraits. Put on your
+        red-cyan 3D glasses—often called red-blue glasses—and explore
+        the images in fullscreen.
+      </p>
+      <div class="actions">
+        <a class="button primary"
+           href="https://3dpictureswithglasses.com/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Explore the 3D Art Gallery, opens in a new tab">
+          Explore the 3D Art Gallery ↗
+        </a>
+      </div>
     </section>
   </main>
 
@@ -950,16 +1618,20 @@
     (() => {
       const reader = document.getElementById("reader");
       const slides = Array.from(reader.querySelectorAll(".slide"));
+      const firstPage = document.getElementById("first-button");
       const previous = document.getElementById("previous-button");
       const next = document.getElementById("next-button");
       const counter = document.getElementById("page-count");
       const fullscreen = document.getElementById("fullscreen-button");
       const imageStart = document.getElementById("image-start-button");
+      const previewTotal = document.getElementById("preview-total");
+      const restart = document.getElementById("restart-adventure");
 
       let current = 0;
       let savedOverflow = "";
 
       document.body.classList.remove("no-js");
+      previewTotal.textContent = slides.length;
 
       function showPage(index) {
         const target = Math.max(0, Math.min(index, slides.length - 1));
@@ -980,8 +1652,10 @@
           slide.hidden = i !== current;
         });
 
+        firstPage.disabled = current === 0;
         previous.disabled = current === 0;
         next.disabled = current === slides.length - 1;
+
         counter.textContent = `Page ${current + 1} of ${slides.length}`;
 
         slides[current].querySelectorAll("img").forEach(img => {
@@ -1000,7 +1674,8 @@
           (
             focusWasInsideOldSlide ||
             (document.activeElement === next && next.disabled) ||
-            (document.activeElement === previous && previous.disabled)
+            (document.activeElement === previous && previous.disabled) ||
+            (document.activeElement === firstPage && firstPage.disabled)
           )
         ) {
           const focusTarget = next.disabled ? previous : next;
@@ -1008,9 +1683,26 @@
         }
       }
 
-      previous.addEventListener("click", () => showPage(current - 1));
-      next.addEventListener("click", () => showPage(current + 1));
-      imageStart.addEventListener("click", () => showPage(2));
+      firstPage.addEventListener("click", () => {
+        showPage(0);
+      });
+
+      restart.addEventListener("click", () => {
+        showPage(0);
+        reader.scrollIntoView({ block: "start" });
+      });
+
+      previous.addEventListener("click", () => {
+        showPage(current - 1);
+      });
+
+      next.addEventListener("click", () => {
+        showPage(current + 1);
+      });
+
+      imageStart.addEventListener("click", () => {
+        showPage(2);
+      });
 
       function isExpanded() {
         return document.fullscreenElement === reader ||
@@ -1062,12 +1754,13 @@
             await reader.requestFullscreen();
             return;
           } catch (error) {
-            // Use an expanded browser view when native fullscreen is unavailable.
+            // Use expanded browser view if native fullscreen is unavailable.
           }
         }
 
         savedOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";
+
         reader.classList.add("expanded");
         reader.setAttribute("role", "dialog");
         reader.setAttribute("aria-modal", "true");
@@ -1134,12 +1827,21 @@
           return;
         }
 
+        const focused = document.activeElement;
+
+        if (
+          focused &&
+          focused !== document.body &&
+          focused !== document.documentElement &&
+          !reader.contains(focused) &&
+          !isExpanded()
+        ) return;
+
         const rect = reader.getBoundingClientRect();
         const inView =
           rect.top < window.innerHeight * .5 &&
           rect.bottom > window.innerHeight * .5;
-
-        const focusInReader = reader.contains(document.activeElement);
+        const focusInReader = reader.contains(focused);
 
         if (!inView && !focusInReader && !isExpanded()) return;
 
