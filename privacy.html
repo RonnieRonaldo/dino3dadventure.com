@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Privacy &amp; Analytics | Dino 3D Adventure</title>
+  <meta name="description" content="How Dino 3D Adventure uses optional Google Analytics, browser storage and external services.">
+  <link rel="canonical" href="https://dino3dadventure.com/privacy.html">
+  <meta name="theme-color" content="#061426">
+
+  <link rel="stylesheet" href="/analytics-consent.css">
+  <script defer src="/analytics-consent.js"></script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #edf7ff;
+      --muted: #becfe2;
+      --cyan: #8cebea;
+      --gold: #f3d898;
+      --line: rgba(167,216,245,.26);
+      --panel: rgba(4,17,35,.88);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #061426;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height: 1.65;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: url("images/space-background.jpg") center / cover no-repeat;
+      pointer-events: none;
+    }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    button, .button { touch-action: manipulation; }
+    a { color: var(--cyan); }
+
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 5px;
+    }
+
+    [hidden] { display: none !important; }
+
+    .site-header {
+      max-width: 1200px;
+      margin: auto;
+      padding: 25px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .brand-skull {
+      width: 74px;
+      height: 64px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 3px 9px rgba(0,0,0,.45));
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      font-family: Georgia,"Times New Roman",serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1;
+      text-shadow: 0 3px 8px rgba(0,0,0,.65);
+    }
+
+    .brand-name .top {
+      font-size: clamp(1.5rem,4vw,2.25rem);
+      letter-spacing: .055em;
+    }
+
+    .brand-name .bottom {
+      margin-top: 8px;
+      font-size: clamp(.72rem,2vw,1rem);
+      letter-spacing: .24em;
+    }
+
+    .header-link {
+      font-size: .88rem;
+      text-decoration: none;
+    }
+
+    main { padding: 0 18px; }
+
+    .intro, .info-section, .book-section {
+      max-width: 900px;
+      margin: 20px auto 32px;
+      padding: clamp(24px,5vw,42px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      box-shadow: 0 18px 65px rgba(0,0,0,.22);
+    }
+
+    .intro, .book-section { text-align: center; }
+
+    .eyebrow {
+      margin: 0 0 13px;
+      color: var(--cyan);
+      font-size: .75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-family: Georgia,"Times New Roman",serif;
+      font-size: clamp(2rem,5.5vw,3.5rem);
+      line-height: 1.12;
+      color: var(--gold);
+      text-wrap: balance;
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      font-family: Georgia,"Times New Roman",serif;
+      font-size: clamp(1.4rem,3.4vw,1.9rem);
+      line-height: 1.25;
+      color: var(--gold);
+      text-wrap: balance;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      color: var(--gold);
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+
+    .lead {
+      max-width: 710px;
+      margin: 0 auto 20px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .glasses-note {
+      padding: 20px;
+      margin: 24px 0;
+      border: 1px solid rgba(140,235,234,.35);
+      border-radius: 15px;
+      background: rgba(61,157,186,.1);
+    }
+
+    .glasses-note h2 {
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 1.12rem;
+    }
+
+    .glasses-note p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .glasses-note .fullscreen-tip {
+      margin-top: 14px;
+      color: var(--cyan);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .button, .control {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 11px 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #142a42;
+      color: white;
+      font-weight: 650;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--cyan);
+      border-color: var(--cyan);
+      color: #05202a;
+    }
+
+    button:disabled {
+      opacity: .46;
+      cursor: not-allowed;
+    }
+
+    .button:hover:not(:disabled),
+    .control:hover:not(:disabled) {
+      filter: brightness(1.12);
+    }
+
+    .preview-note, .small {
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .preview-note { margin: 18px 0 0; }
+
+    .reader {
+      --image-limit: max(180px,calc(100vh - 260px));
+      --image-limit: max(180px,calc(100dvh - 260px));
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(3,12,26,.76);
+      scroll-margin-top: 12px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      max-width: 1100px;
+      margin: 0 auto 14px;
+    }
+
+    .reader-title {
+      margin: 0;
+      font-family: inherit;
+      font-size: clamp(.95rem,2vw,1.2rem);
+      font-weight: 650;
+      color: var(--gold);
+      text-align: left;
+    }
+
+    .stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .slide {
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    .page-image {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: var(--image-limit);
+      object-fit: contain;
+      margin: auto;
+      border-radius: 5px;
+      box-shadow: 0 12px 45px rgba(0,0,0,.35);
+    }
+
+    figcaption {
+      max-width: 800px;
+      margin: 10px auto 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .scene-caption { margin: 0; }
+
+    .intro-page-layout {
+      width: min(100%,calc(var(--image-limit) * 1.2));
+      margin: auto;
+      display: grid;
+      grid-template-columns: minmax(0,100fr) minmax(0,18fr);
+      column-gap: 1.6667%;
+      align-items: center;
+    }
+
+    .intro-page-layout .page-image {
+      width: 100%;
+      height: auto;
+      max-height: var(--image-limit);
+    }
+
+    .image-next-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      cursor: pointer;
+      line-height: 0;
+    }
+
+    .image-next-button img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .image-next-button:hover {
+      outline: 2px solid var(--cyan);
+      outline-offset: 5px;
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    #page-count {
+      min-width: 95px;
+      color: var(--muted);
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    .keyboard-hint {
+      margin: 12px 0 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .78rem;
+    }
+
+    details {
+      margin-top: 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(10,30,49,.85);
+      overflow: hidden;
+      text-align: left;
+    }
+
+    summary {
+      padding: 15px 20px;
+      color: var(--ink);
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    summary::marker { color: var(--cyan); }
+
+    details[open] summary {
+      border-bottom: 1px solid var(--line);
+      color: var(--cyan);
+    }
+
+    .detail-content {
+      padding: 0 22px 20px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .detail-content p { color: var(--muted); }
+    .detail-content > h3:first-child { margin-top: 20px; }
+    .detail-content > p:last-child { margin-bottom: 0; }
+    .dino-details { margin-top: 12px; }
+
+    .dino-details summary {
+      font-size: .95rem;
+      color: var(--gold);
+    }
+
+    .reader:fullscreen, .reader.expanded {
+      --image-limit: max(100px,calc(100vh - 170px));
+      --image-limit: max(100px,calc(100dvh - 170px));
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      margin: 0;
+      padding: 12px;
+      border: 0;
+      border-radius: 0;
+      background: #030b16;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+    }
+
+    .reader.expanded {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      height: 100dvh;
+    }
+
+    .reader:fullscreen .toolbar,
+    .reader.expanded .toolbar {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .reader:fullscreen .stage,
+    .reader.expanded .stage {
+      flex: 1;
+      min-height: 0;
+    }
+
+    .reader:fullscreen figcaption,
+    .reader.expanded figcaption,
+    .reader:fullscreen .keyboard-hint,
+    .reader.expanded .keyboard-hint {
+      display: none;
+    }
+
+    .reader:fullscreen .navigation,
+    .reader.expanded .navigation {
+      flex-shrink: 0;
+    }
+
+    .info-section > p, .book-section p {
+      color: var(--muted);
+    }
+
+    .shorts-section {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: clamp(20px,4vw,36px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      text-align: center;
+    }
+
+    .shorts-intro {
+      max-width: 720px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+    }
+
+    .shorts-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 22px;
+    }
+
+    .short-card { min-width: 0; }
+
+    .short-card h3 {
+      margin: 0 0 12px;
+      min-height: 2.8em;
+      font-size: 1rem;
+    }
+
+    .short-player {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #000;
+      border: 1px solid var(--line);
+    }
+
+    .short-player iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .short-card .button {
+      margin-top: 14px;
+      font-size: .9rem;
+    }
+
+    /* Compact visual introduction; longer reading follows the viewer. */
+    .visual-intro { padding: clamp(20px,3vw,30px); }
+    .visual-intro h1 { font-size: clamp(1.8rem,4.5vw,2.8rem); }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      gap: clamp(20px,4vw,36px);
+      align-items: center;
+    }
+    .hero-cover-link { display: block; line-height: 0; }
+    .hero-cover {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .hero-copy .lead { font-size: 1.15rem; }
+    .hero-copy .button { max-width: 100%; }
+    @media (max-width: 560px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 16px; }
+      .hero-cover { max-height: 260px; }
+      .hero-copy .lead { font-size: 1rem; margin-bottom: 14px; }
+      .hero-copy .small { margin-bottom: 0; }
+    }
+
+    footer {
+      padding: 18px 20px 35px;
+      color: var(--muted);
+      text-align: center;
+      font-size: .8rem;
+    }
+
+    .no-js .slide { margin-bottom: 28px; }
+    .no-js .stage { display: block; }
+    .no-js .js-only { display: none; }
+
+    .no-js .intro-page-layout {
+      display: block;
+      width: min(100%,var(--image-limit));
+    }
+
+    /* T. rex title and picture scale together without cropping. */
+    .trex-artwork {
+      width: min(100%,calc((var(--image-limit) - 12px) / 1.29));
+      margin: auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .trex-artwork img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      max-height: none;
+    }
+
+    .trex-title { border-radius: 5px; }
+    .finale-caption { max-width: 900px; }
+    .finale-caption > h2 { margin: 20px 0 12px; }
+
+    .finale-card {
+      margin-top: 24px;
+      padding: clamp(20px,4vw,32px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #061426;
+      text-align: center;
+    }
+
+    .warpi-message {
+      display: grid;
+      grid-template-columns: minmax(130px,210px) minmax(0,1fr);
+      align-items: center;
+      gap: 24px;
+      text-align: left;
+    }
+
+    .warpi-portrait {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .warpi-message p { margin: 0 0 12px; }
+
+    .encounter-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0;
+      margin: 20px 0 24px;
+      list-style: none;
+    }
+
+    .encounter-list li {
+      padding: 7px 13px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      color: var(--gold);
+      background: #102339;
+    }
+
+    .restart-link {
+      padding: 9px 14px;
+      margin-top: 16px;
+      border: 0;
+      border-radius: 8px;
+      color: var(--cyan);
+      background: transparent;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .farewell-eyes {
+      display: block;
+      width: min(100%,620px);
+      height: auto;
+      margin: 26px auto 0;
+    }
+
+    @media (max-width: 700px) {
+      .shorts-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .short-card {
+        width: 100%;
+        max-width: 360px;
+        margin: auto;
+      }
+
+      .short-card h3 { min-height: 0; }
+    }
+
+    @media (max-width: 560px) {
+      .site-header { padding: 18px; gap: 12px; }
+      .brand { gap: 10px; }
+      .brand-skull { width: 52px; height: 48px; }
+      .header-link { max-width: 85px; font-size: .78rem; }
+      .intro { margin-top: 8px; }
+      .reader { padding: 10px; }
+      .toolbar { gap: 10px; align-items: flex-start; }
+      .toolbar .control { font-size: .78rem; flex-shrink: 0; }
+      .control { padding: 10px 12px; font-size: .86rem; }
+      .navigation { gap: 6px; }
+      .navigation .control { padding: 8px; font-size: .78rem; }
+      #first-button { min-width: 80px; }
+      #page-count { min-width: 80px; font-size: .8rem; }
+      .detail-content { padding: 0 17px 17px; }
+      summary { padding: 14px 16px; }
+
+      .warpi-message {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .warpi-portrait {
+        max-width: 190px;
+        margin: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico?v=1" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head><body><main style="max-width:850px;margin:40px auto;padding:24px;line-height:1.8"><a href="/">← Back to Dino 3D Adventure</a>
+<h1>Privacy &amp; analytics</h1>
+<p>You can enjoy the dinosaur preview and follow the book links whether you accept or reject analytics.</p>
+<h2>Optional Google Analytics</h2><p>If you select “Accept analytics”, we load Google Analytics 4 to understand visits and use of the website. Google may process cookie identifiers, pages visited, browser and device information, approximate location and interactions. Analytics cookies can recognise a browser across visits.</p>
+<p>Our Google Analytics script does not load before you accept. Advertising storage, advertising user data and advertising personalisation consent remain off. You can reject analytics or change your choice using “Analytics settings” below.</p>
+<p>Withdrawing consent disables further collection through our Google Analytics tag and removes accessible first-party Google Analytics cookies for this site. It does not erase information already collected by Google. Read <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from sites using its services</a>.</p>
+<h2>Remembering your choice</h2><p>We store your analytics choice in your browser’s local storage for up to 180 days. This preference is separate from analytics cookies. If storage is blocked, your choice may not persist between pages. Clearing this site’s browser data removes the saved choice. Closing the banner does not grant consent or change an existing choice.</p>
+<h2>The dinosaur preview</h2><p>The book preview works without optional analytics. It does not require an account or payment. This website does not ask you to submit personal information to use the preview.</p>
+<h2>YouTube videos</h2><p>The site includes YouTube videos using YouTube’s privacy-enhanced embed domain. When an embedded player loads or you play a video, YouTube may receive technical information such as your IP address and browser information and may process data for playback. These players are separate from our Google Analytics choice; rejecting analytics does not block them. See <a href="https://policies.google.com/privacy">Google’s privacy policy</a>.</p>
+<h2>Bookshops and other websites</h2><p>Links to Apple Books, Google Play Books, YouTube and the 3D art gallery take you to separate websites with their own privacy settings. Purchases are handled by the bookshop you choose. This Dino website does not collect your payment card details.</p>
+<h2>Website delivery</h2><p>Cloudflare hosts and delivers this website. Technical request data, including IP addresses, is processed to deliver and protect the site. This is separate from optional Google Analytics. See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s privacy policy</a>.</p>
+<p><button class="analytics-settings" type="button">Analytics settings</button></p></main><footer><a href="/">Dino 3D Adventure</a> · Privacy &amp; analytics</footer></body></html>
