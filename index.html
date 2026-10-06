@@ -675,7 +675,13 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>.js .slide:not(:first-child):not([data-active]){display:none}</style>
-</head>
+<style>
+.hero-cover-link{height:380px}.hero-cover{height:100%;max-height:none;object-fit:contain}
+@media(max-width:560px){.hero-cover-link{height:260px}}
+.video-load{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;width:100%;height:100%;padding:24px;border:0;background:linear-gradient(145deg,#142a42,#030b16);color:#edf7ff;cursor:pointer;font:inherit;text-align:center}
+.video-load .play-icon{display:grid;place-items:center;width:70px;height:70px;border-radius:50%;background:#8cebea;color:#05202a;font-size:30px}
+.video-load:hover{background:#142a42}
+</style></head>
 
 <body class="no-js">
   <header class="site-header">
@@ -1483,14 +1489,7 @@
         <article class="short-card" aria-labelledby="short-title-1">
           <h3 id="short-title-1">Fall Into the Infinite Tunnel</h3>
           <div class="short-player">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/wDywWy3-YxE?playsinline=1"
-              title="Fall Into the Infinite Tunnel — anaglyph 3D YouTube Short"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              allowfullscreen>
-            </iframe>
+            <button class="video-load" type="button" data-video="https://www.youtube-nocookie.com/embed/wDywWy3-YxE?playsinline=1" data-title="Fall Into the Infinite Tunnel — anaglyph 3D YouTube Short" aria-label="Play Fall Into the Infinite Tunnel — anaglyph 3D YouTube Short"><span class="play-icon" aria-hidden="true">▶</span><span>Play video</span><span class="small">Fall Into the Infinite Tunnel — anaglyph 3D YouTube Short</span></button>
           </div>
           <a class="button"
              href="https://www.youtube.com/shorts/wDywWy3-YxE"
@@ -1503,14 +1502,7 @@
         <article class="short-card" aria-labelledby="short-title-2">
           <h3 id="short-title-2">Galactic Descent</h3>
           <div class="short-player">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/mPIT2V6bM2E?playsinline=1"
-              title="Galactic Descent — anaglyph 3D YouTube Short"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              allowfullscreen>
-            </iframe>
+            <button class="video-load" type="button" data-video="https://www.youtube-nocookie.com/embed/mPIT2V6bM2E?playsinline=1" data-title="Galactic Descent — anaglyph 3D YouTube Short" aria-label="Play Galactic Descent — anaglyph 3D YouTube Short"><span class="play-icon" aria-hidden="true">▶</span><span>Play video</span><span class="small">Galactic Descent — anaglyph 3D YouTube Short</span></button>
           </div>
           <a class="button"
              href="https://www.youtube.com/shorts/mPIT2V6bM2E"
@@ -1523,14 +1515,7 @@
         <article class="short-card" aria-labelledby="short-title-3">
           <h3 id="short-title-3">Vintage Sun &amp; Spinning Moon</h3>
           <div class="short-player">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/ZNtMy2amHv0?playsinline=1"
-              title="Vintage Sun and Spinning Moon — anaglyph 3D YouTube Short"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              allowfullscreen>
-            </iframe>
+            <button class="video-load" type="button" data-video="https://www.youtube-nocookie.com/embed/ZNtMy2amHv0?playsinline=1" data-title="Vintage Sun and Spinning Moon — anaglyph 3D YouTube Short" aria-label="Play Vintage Sun and Spinning Moon — anaglyph 3D YouTube Short"><span class="play-icon" aria-hidden="true">▶</span><span>Play video</span><span class="small">Vintage Sun and Spinning Moon — anaglyph 3D YouTube Short</span></button>
           </div>
           <a class="button"
              href="https://www.youtube.com/shorts/ZNtMy2amHv0"
@@ -1853,5 +1838,16 @@
       showPage(0);
     })();
   </script>
-</body>
+<script>document.querySelectorAll('.video-load').forEach(button => {
+ button.addEventListener('click', () => {
+  const frame=document.createElement('iframe');
+  frame.title=button.dataset.title;
+  frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen';
+  frame.allowFullscreen=true;
+  frame.referrerPolicy='strict-origin-when-cross-origin';
+  frame.src=button.dataset.video+'&autoplay=1';
+  button.replaceWith(frame);
+  frame.focus();
+ });
+});</script></body>
 </html>
