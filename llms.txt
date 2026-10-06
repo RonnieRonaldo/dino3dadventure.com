@@ -1,0 +1,10 @@
+# Dino 3D Adventure
+
+> A free online preview of Dinosaur Anaglyph 3D Adventure, with dinosaur pictures designed for red/cyan 3D glasses.
+
+The preview includes 17 pages, fullscreen viewing and accompanying reading panels. The full digital book is available through the store links on the website. Glasses are not included.
+
+## Pages
+
+- [Dinosaur 3D book preview](https://dino3dadventure.com/): Preview, viewing tips, videos and ebook store links.
+- [Privacy and analytics](https://dino3dadventure.com/privacy.html)
