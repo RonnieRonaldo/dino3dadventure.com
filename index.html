@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>3D Anaglyph Images of Dinosaurs | Dino 3D Adventure</title>
+  <title>3D Dinosaur Book | Anaglyph Images &amp; 3D Pictures</title>
   <meta name="description" content="Explore dinosaur 3D pictures with red and blue glasses. Meet T. rex and other prehistoric animals in a free 17-page anaglyph book preview with Warpi.">
   <link rel="canonical" href="https://dino3dadventure.com/">
   <meta name="theme-color" content="#061426">
@@ -679,8 +679,11 @@
 .hero-cover-link{height:380px}.hero-cover{height:100%;max-height:none;object-fit:contain}
 @media(max-width:560px){.hero-cover-link{height:260px}}
 .video-load{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;width:100%;height:100%;padding:24px;border:0;background:linear-gradient(145deg,#142a42,#030b16);color:#edf7ff;cursor:pointer;font:inherit;text-align:center}
+.video-load{position:relative;isolation:isolate;overflow:hidden;background:#071524}
+.video-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:.82}
+.video-load::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,8,19,.88),rgba(0,8,19,.12) 60%,rgba(0,8,19,.3));z-index:-1}
 .video-load .play-icon{display:grid;place-items:center;width:70px;height:70px;border-radius:50%;background:#8cebea;color:#05202a;font-size:30px}
-.video-load:hover{background:#142a42}
+.video-load:hover .video-thumb{opacity:1}
 </style><style>
 /* Match the enhanced viewer layout before the end-of-page script runs. */
 .js .no-js .stage{display:flex}
@@ -733,7 +736,7 @@
   <main>
     <!-- VISUAL INTRODUCTION -->
     <section class="intro visual-intro" aria-labelledby="intro-title">
-      <h1 id="intro-title">3D Anaglyph Images of Dinosaurs</h1>
+      <h1 id="intro-title">3D Dinosaur Book</h1>
       <div class="hero-layout">
         <a class="hero-cover-link" href="#reader" aria-label="Start the free dinosaur 3D book preview">
           <img class="hero-cover"
@@ -742,7 +745,7 @@
                fetchpriority="high" decoding="async" width="1664" height="1651">
         </a>
         <div class="hero-copy">
-          <p class="lead">Put on your red-cyan glasses and travel back in time with Warpi.</p>
+          <p class="lead">Put on your red-cyan glasses and travel back in time with Warpi. Explore prehistoric worlds through anaglyph images in this 3D dinosaur book.</p>
           <a class="button primary" href="#reader">Start the Free 3D Preview ↓</a>
           <p class="small">Red-cyan 3D glasses required.</p>
         </div>
@@ -753,13 +756,14 @@
     <section class="reader" id="reader" aria-labelledby="reader-title">
       <div class="toolbar">
         <h2 class="reader-title" id="reader-title">
-          Dinosaur 3D Pictures — Free Book Preview
+          Read This Dinosaur Book with 3D Glasses
         </h2>
         <button class="control js-only" id="fullscreen-button"
                 type="button" aria-pressed="false">
           ⛶ View fullscreen
         </button>
       </div>
+      <p class="reader-seo-intro">Explore dinosaur 3d pictures in this free preview as Warpi guides you through a prehistoric adventure.</p>
 
       <div class="stage">
         <!-- PAGE 1: COVER -->
@@ -1361,12 +1365,12 @@
       </p>
 
       <div class="glasses-note" id="glasses">
-        <h2>3D Pictures for Red and Blue Glasses</h2>
+        <h2>3D Pictures for 3D Glasses</h2>
         <p>
           To see the depth effect, you need
           <strong>red/cyan anaglyph 3D glasses</strong>, often called
           red and blue glasses. Regular cinema glasses will not work
-          with these images. Without the correct glasses, the red and
+          with these 3d anaglyph images. Without the correct glasses, the red and
           cyan outlines will appear doubled.
         </p>
         <p class="fullscreen-tip">
@@ -1408,13 +1412,14 @@
     <!-- GENERAL INFORMATION -->
     <section class="info-section" aria-labelledby="glasses-title">
       <p class="eyebrow">Discover the depth behind the pictures</p>
-      <h2 id="glasses-title">How Do 3D Glasses Work?</h2>
+      <h2 id="glasses-title">Red Cyan 3D Images</h2>
 
       <p>
         These red cyan 3D images combine two slightly different views
         using red and cyan colour channels. The coloured lenses filter
         the image so that each eye receives a different view. Your
-        brain combines those views to create a sense of depth.
+        brain combines those views to create a sense of depth. These
+        3d anaglyph pictures are designed to be viewed with red/cyan glasses.
       </p>
 
       <details>
@@ -1496,7 +1501,7 @@
         <article class="short-card" aria-labelledby="short-title-1">
           <h3 id="short-title-1">Fall Into the Infinite Tunnel</h3>
           <div class="short-player">
-            <button class="video-load" type="button" data-video="https://www.youtube-nocookie.com/embed/wDywWy3-YxE?playsinline=1" data-title="Fall Into the Infinite Tunnel — anaglyph 3D YouTube Short"><span class="play-icon" aria-hidden="true">▶</span><span>Play video</span><span class="small">Fall Into the Infinite Tunnel — anaglyph 3D YouTube Short</span></button>
+            <button class="video-load" type="button" data-video="https://www.youtube-nocookie.com/embed/wDywWy3-YxE?playsinline=1" data-title="Fall Into the Infinite Tunnel — anaglyph 3D YouTube Short"><img class="video-thumb" src="https://i.ytimg.com/vi/wDywWy3-YxE/hqdefault.jpg" alt="" loading="lazy" decoding="async" width="480" height="360"><span class="play-icon" aria-hidden="true">▶</span><span>Play video</span><span class="small">Fall Into the Infinite Tunnel — anaglyph 3D YouTube Short</span></button>
           </div>
           <a class="button"
              href="https://www.youtube.com/shorts/wDywWy3-YxE"
@@ -1509,7 +1514,7 @@
         <article class="short-card" aria-labelledby="short-title-2">
           <h3 id="short-title-2">Galactic Descent</h3>
           <div class="short-player">
-            <button class="video-load" type="button" data-video="https://www.youtube-nocookie.com/embed/mPIT2V6bM2E?playsinline=1" data-title="Galactic Descent — anaglyph 3D YouTube Short"><span class="play-icon" aria-hidden="true">▶</span><span>Play video</span><span class="small">Galactic Descent — anaglyph 3D YouTube Short</span></button>
+            <button class="video-load" type="button" data-video="https://www.youtube-nocookie.com/embed/mPIT2V6bM2E?playsinline=1" data-title="Galactic Descent — anaglyph 3D YouTube Short"><img class="video-thumb" src="https://i.ytimg.com/vi/mPIT2V6bM2E/hqdefault.jpg" alt="" loading="lazy" decoding="async" width="480" height="360"><span class="play-icon" aria-hidden="true">▶</span><span>Play video</span><span class="small">Galactic Descent — anaglyph 3D YouTube Short</span></button>
           </div>
           <a class="button"
              href="https://www.youtube.com/shorts/mPIT2V6bM2E"
@@ -1522,7 +1527,7 @@
         <article class="short-card" aria-labelledby="short-title-3">
           <h3 id="short-title-3">Vintage Sun &amp; Spinning Moon</h3>
           <div class="short-player">
-            <button class="video-load" type="button" data-video="https://www.youtube-nocookie.com/embed/ZNtMy2amHv0?playsinline=1" data-title="Vintage Sun and Spinning Moon — anaglyph 3D YouTube Short"><span class="play-icon" aria-hidden="true">▶</span><span>Play video</span><span class="small">Vintage Sun and Spinning Moon — anaglyph 3D YouTube Short</span></button>
+            <button class="video-load" type="button" data-video="https://www.youtube-nocookie.com/embed/ZNtMy2amHv0?playsinline=1" data-title="Vintage Sun and Spinning Moon — anaglyph 3D YouTube Short"><img class="video-thumb" src="https://i.ytimg.com/vi/ZNtMy2amHv0/hqdefault.jpg" alt="" loading="lazy" decoding="async" width="480" height="360"><span class="play-icon" aria-hidden="true">▶</span><span>Play video</span><span class="small">Vintage Sun and Spinning Moon — anaglyph 3D YouTube Short</span></button>
           </div>
           <a class="button"
              href="https://www.youtube.com/shorts/ZNtMy2amHv0"
